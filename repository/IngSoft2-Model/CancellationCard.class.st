@@ -13,12 +13,6 @@ CancellationCard class >> toDoEffectFor: aCard [
 	^ self new initializeToDoEffectFor: aCard
 ]
 
-{ #category : #comparing }
-CancellationCard >> = aCard [
-
-	^ self class == aCard class
-]
-
 { #category : #accessing }
 CancellationCard >> activateEffectOn: aGame forSpaceship: anId [
 	
