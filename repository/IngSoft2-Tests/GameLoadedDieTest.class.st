@@ -54,6 +54,7 @@ GameLoadedDieTest >> test01GameMovesSpaceshipTwiceWithLoadedDieSequenceSixAndFiv
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
+		
 	aGame moveSpaceship.
 	aGame moveSpaceship.
 
