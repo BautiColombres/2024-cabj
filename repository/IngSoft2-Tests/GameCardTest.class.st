@@ -27,13 +27,15 @@ GameCardTest >> setUp [
 		                 ofLaps: 1
 		                 withWormholeCreator: aWormholeCreator.
 
-	gameDeck := LoadedEffectManager manage: (OrderedCollection
-			             with: AccelerationCard
-			             with: AllyCard
-			             with: OverloadCard
-			             with: RedoCard
-			             with: RepeatCard
-			             with: CancellationCard)
+	gameDeck := LoadedEffectManager manage:
+		            (OrderedCollection withAll: {
+				             AccelerationCard.
+				             AllyCard.
+				             OverloadCard.
+				             RedoCard.
+				             RepeatCard.
+				             CancellationCard.
+				             ReverseCard })
 ]
 
 { #category : #running }
@@ -847,6 +849,34 @@ GameCardTest >> test33GamePlaysWithDeckWithProbabilisticDistributionThenSpaceshi
 
 	result := Dictionary new.
 	result at: 1 put: 7.
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]
+
+{ #category : #reverse }
+GameCardTest >> test34 [
+
+	| result aGame |
+	aLoadedDie := LoadedDie of: #( 7 7 ).
+
+	aGame := Game
+		         numberOfSpaceships: 3
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+		
+	aGame moveSpaceship.
+	aGame
+		spaceshipId: 1
+		useInstantCard: ReverseCard
+		toDoEffectFor: nil.
+	aGame moveSpaceship.
+	aGame moveSpaceship.
+	result := Dictionary new.
+	result at: 1 put: 8.
+	result at: 2 put: 1.
+	result at: 3 put: 8.
+
 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]

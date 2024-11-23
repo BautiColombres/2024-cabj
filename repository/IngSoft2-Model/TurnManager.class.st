@@ -60,6 +60,12 @@ TurnManager >> nextTurn [
 		self nextSpaceship ]
 ]
 
+{ #category : #reverseCard }
+TurnManager >> reverseTurnOrder [
+
+	
+]
+
 { #category : #accessing }
 TurnManager >> spaceshipPlaying [
 
