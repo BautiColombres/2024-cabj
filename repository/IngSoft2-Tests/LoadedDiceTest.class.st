@@ -7,9 +7,11 @@ Class {
 { #category : #tests }
 LoadedDiceTest >> test001WhenCollectionOfTwoLoadedDiceThrowThenReturnsSumOfFaces [
 
-	| aCollectionOfLoadedDie dice|	
-	dice:=OrderedCollection with: (LoadedDie of:#(3)) with: (LoadedDie of:#(3)).
-	aCollectionOfLoadedDie := Dice of: dice .
+	| aCollectionOfLoadedDie dice |
+	dice := OrderedCollection
+		        with: (LoadedDie of: #( 3 ))
+		        with: (LoadedDie of: #( 3 )).
+	aCollectionOfLoadedDie := Dice of: dice.
 	self assert: aCollectionOfLoadedDie throw equals: 6
 ]
 
@@ -17,7 +19,7 @@ LoadedDiceTest >> test001WhenCollectionOfTwoLoadedDiceThrowThenReturnsSumOfFaces
 LoadedDiceTest >> test002CollectionInitializeWithOneDieThrowThenReturnsDiesFaces [
 
 	| aCollectionOfLoadedDie dice |
-	dice:=OrderedCollection with: (LoadedDie of:#(3)).
+	dice := OrderedCollection with: (LoadedDie of: #( 3 )).
 	aCollectionOfLoadedDie := Dice of: dice.
 	self assert: aCollectionOfLoadedDie throw equals: 3
 ]
@@ -25,8 +27,10 @@ LoadedDiceTest >> test002CollectionInitializeWithOneDieThrowThenReturnsDiesFaces
 { #category : #tests }
 LoadedDiceTest >> test003WhenCollectionInitializeWithTwoDiceOfThreeThenAmountOfFacesEqualsSix [
 
-	| aCollectionOfLoadedDie dice|
-	dice:=OrderedCollection with: (LoadedDie of:#(3)) with: (LoadedDie of:#(3)).
-	aCollectionOfLoadedDie := Dice of:dice.
+	| aCollectionOfLoadedDie dice |
+	dice := OrderedCollection
+		        with: (LoadedDie of: #( 3 ))
+		        with: (LoadedDie of: #( 3 )).
+	aCollectionOfLoadedDie := Dice of: dice.
 	self assert: aCollectionOfLoadedDie amountOfFaces equals: 6
 ]
