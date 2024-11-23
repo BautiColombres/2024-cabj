@@ -854,7 +854,7 @@ GameCardTest >> test33GamePlaysWithDeckWithProbabilisticDistributionThenSpaceshi
 ]
 
 { #category : #reverse }
-GameCardTest >> test34 [
+GameCardTest >> test34SpaceshipOneMovesAndPlaysReverseThenThreeMovesInsteadOfTwo [
 
 	| result aGame |
 	aLoadedDie := LoadedDie of: #( 7 7 ).

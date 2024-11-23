@@ -203,8 +203,10 @@ Game >> resetSpaceshipsToCellOne [
 
 { #category : #reverseCard }
 Game >> reverseTurnOrder [
-	
+
+	turnManager previousTurn.
 	turnManager reverseTurnOrder.
+	turnManager nextTurn
 ]
 
 { #category : #card }

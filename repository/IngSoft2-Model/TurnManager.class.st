@@ -28,9 +28,9 @@ TurnManager >> initializeManage: collectionOfSpaceships [
 
 	spaceships := collectionOfSpaceships collect: [ :spaceship |
 		              spaceship ].
-	
-	previousSpaceship := nil.
+
 	currentSpaceship := spaceships at: 1.
+	previousSpaceship := currentSpaceship.
 	turnsToSkip := Dictionary new.
 	collectionOfSpaceships each: [ :spaceship |
 		turnsToSkip at: spaceship id put: 0 ]

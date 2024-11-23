@@ -202,3 +202,19 @@ TurnManagerTest >> test11PreviousTurnThenGoesBackToPreviousSpaceship [
 	Spaceship initialize.
 	self assert: currentSpaceshipId equals: 1
 ]
+
+{ #category : #tests }
+TurnManagerTest >> test12PreviousTurnAtStartItsTheSameAsCurrentTurn [
+
+	| aTurnManager collectionOfSpaceships currentSpaceshipId |
+	collectionOfSpaceships := CollectionOfSpaceships
+		                          numberOfSpaceships: 3
+		                          withAmountOfFuel: 5.
+
+	aTurnManager := TurnManager manage: collectionOfSpaceships.
+	aTurnManager previousTurn.
+	currentSpaceshipId := aTurnManager spaceshipPlaying id.
+
+	Spaceship initialize.
+	self assert: currentSpaceshipId equals: 1
+]
