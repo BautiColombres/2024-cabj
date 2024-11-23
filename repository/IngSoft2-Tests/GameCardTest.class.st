@@ -864,14 +864,11 @@ GameCardTest >> test34 [
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-		
+
 	aGame moveSpaceship.
-	aGame
-		spaceshipId: 1
-		useInstantCard: ReverseCard
-		toDoEffectFor: nil.
+	aGame spaceshipId: 1 useInstantCard: ReverseCard toDoEffectFor: nil.
 	aGame moveSpaceship.
-	aGame moveSpaceship.
+
 	result := Dictionary new.
 	result at: 1 put: 8.
 	result at: 2 put: 1.
