@@ -877,3 +877,28 @@ GameCardTest >> test34SpaceshipOneMovesAndPlaysReverseThenThreeMovesInsteadOfTwo
 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
+
+{ #category : #reverse }
+GameCardTest >> test35TwoReverseCardsPlayedThenTurnOrderStaysTheSame [
+	| result aGame |
+	aLoadedDie := LoadedDie of: #( 7 7 ).
+
+	aGame := Game
+		         numberOfSpaceships: 3
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+
+	aGame moveSpaceship.
+	aGame spaceshipId: 1 useInstantCard: ReverseCard toDoEffectFor: nil.
+	aGame spaceshipId: 2 useInstantCard: ReverseCard toDoEffectFor: nil.
+	aGame moveSpaceship.
+
+	result := Dictionary new.
+	result at: 1 put: 8.
+	result at: 2 put: 8.
+	result at: 3 put: 1.
+
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]
