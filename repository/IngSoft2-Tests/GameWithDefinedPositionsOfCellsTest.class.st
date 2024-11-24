@@ -414,7 +414,7 @@ GameWithDefinedPositionsOfCellsTest >> test12SpaceshipEnterHyperSpaceJumpThenItM
 		                 ofLaps: 2
 		                 withWormholeCreator: aWormholeCreator.
 
-	aLoadedDie := LoadedDie of: #( 7 6 ).
+	aLoadedDie := LoadedDie of: #( 7 6 10 ).
 
 	aGame := Game
 		         numberOfSpaceships: 1
