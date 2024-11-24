@@ -37,7 +37,8 @@ GameCardTest >> setUp [
 				             CancellationCard.
 				             ReverseCard.
 				             SkipCard.
-				             DoubleCard })
+				             DoubleCard.
+				             FreedomCard })
 ]
 
 { #category : #running }
@@ -469,7 +470,7 @@ GameCardTest >> test36SkipCardPlayedThenSpaceshipThreeDoesntGetItsTurn [
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
 
-{ #category : #skip }
+{ #category : #double }
 GameCardTest >> test37SpaceshipsOneAndThreeUseDoubleCardThenGetToPlayTwiceInARow [
 
 	| result aGame |
@@ -493,6 +494,40 @@ GameCardTest >> test37SpaceshipsOneAndThreeUseDoubleCardThenGetToPlayTwiceInARow
 	result at: 1 put: 15.
 	result at: 2 put: 8.
 	result at: 3 put: 15.
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]
+
+{ #category : #freedom }
+GameCardTest >> test38SpaceshipTwoPlaysFreedomCardThenGetsOutOfJail [
+
+	| result aGame |
+	aLoadedDie := LoadedDie of: #( 7 9 7 7 15 ).
+
+	30 timesRepeat: [ collectionOfCells add: Cell new ].
+
+	collectionOfCells at: 10 put: JailCell new.
+
+	aBoardCreator := BoardCreator
+		                 with: collectionOfCells
+		                 ofLaps: 1
+		                 withWormholeCreator: aWormholeCreator.
+
+	aGame := Game
+		         numberOfSpaceships: 2
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+
+	aGame moveSpaceship.
+	aGame moveSpaceship.
+	aGame spaceshipId: 2 useInstantCard: FreedomCard toDoEffectFor: 2.
+	aGame moveSpaceship.
+	aGame moveSpaceship.
+
+	result := Dictionary new.
+	result at: 1 put: 15.
+	result at: 2 put: 17.
 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]

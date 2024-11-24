@@ -39,9 +39,10 @@ GameTest >> setUp [
 					             CancellationCard.
 					             ReverseCard.
 					             SkipCard.
-					             DoubleCard })
+					             DoubleCard.
+					             FreedomCard })
 		            withProbabilitiesDistribution:
-		            #( 12 11 11 11 11 11 11 11 11 )
+		            #( 10 10 10 10 10 10 10 10 10 10 )
 ]
 
 { #category : #asserting }

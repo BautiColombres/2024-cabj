@@ -13,11 +13,11 @@ CancellationCard class >> toDoEffectFor: aCard [
 	^ self new initializeToDoEffectFor: aCard
 ]
 
-{ #category : #accessing }
+{ #category : #effect }
 CancellationCard >> activateEffectOn: aGame forSpaceship: anId [
-	
-	aGame removeTheCard: cardToCancel andSaveTheLastInstantCardPlayed: self.
-	
+
+	aGame activateCard: self.
+	aGame removeTheCard: cardToCancel
 ]
 
 { #category : #initialization }

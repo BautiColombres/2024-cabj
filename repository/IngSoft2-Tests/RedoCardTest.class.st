@@ -37,7 +37,8 @@ RedoCardTest >> setUp [
 				             CancellationCard.
 				             ReverseCard.
 				             SkipCard.
-				             DoubleCard })
+				             DoubleCard.
+				             FreedomCard })
 ]
 
 { #category : #acceleration }
@@ -261,6 +262,42 @@ RedoCardTest >> test08RedoADoubleCardThenSpaceshipOnePlaysThreeTimesInARow [
 	result at: 2 put: 1.
 	result at: 3 put: 1.
 
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]
+
+{ #category : #freedom }
+RedoCardTest >> test09RedoAFreedomCardThenSpaceshipTwoGetsToMove [
+
+	| aGame result |
+	aLoadedDie := LoadedDie of: #( 7 7 4 4 10 ).
+
+	collectionOfCells := OrderedCollection new.
+	30 timesRepeat: [ collectionOfCells add: Cell new ].
+
+	collectionOfCells at: 8 put: JailCell new.
+
+	aBoardCreator := BoardCreator
+		                 with: collectionOfCells
+		                 ofLaps: 2
+		                 withWormholeCreator: aWormholeCreator.
+
+	aGame := Game
+		         numberOfSpaceships: 2
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+
+	aGame moveSpaceship.
+	aGame spaceshipId: 1 useInstantCard: FreedomCard toDoEffectFor: 1.
+	aGame moveSpaceship.
+	aGame spaceshipId: 2 useInstantCard: RedoCard toDoEffectFor: 2.
+	aGame moveSpaceship.
+	aGame moveSpaceship.
+
+	result := Dictionary new.
+	result at: 1 put: 12.
+	result at: 2 put: 12.
 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]

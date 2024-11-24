@@ -35,10 +35,13 @@ RepeatCardTest >> setUp [
 				             RedoCard.
 				             RepeatCard.
 				             CancellationCard.
-				             ReverseCard })
+				             ReverseCard.
+				             SkipCard.
+				             DoubleCard.
+				             FreedomCard })
 ]
 
-{ #category : #repeat }
+{ #category : #'black hole' }
 RepeatCardTest >> test01SpaceshipOneEntersBlackHoleAndSpaceshipTwoRepeatsEffectThenSpaceshipOneIsInPositionOne [
 
 	| aGame result |
@@ -92,7 +95,7 @@ RepeatCardTest >> test02ReapeatCardRepeatsACellThenNothingChanges [
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
 
-{ #category : #repeat }
+{ #category : #'moon walk' }
 RepeatCardTest >> test03RepeatCardRepeatsMoonWalkThenSpaceshipOneMovesBackwards [
 
 	| aGame result |
@@ -123,7 +126,7 @@ RepeatCardTest >> test03RepeatCardRepeatsMoonWalkThenSpaceshipOneMovesBackwards 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
 
-{ #category : #repeat }
+{ #category : #'atomic bomb' }
 RepeatCardTest >> test04RepeatCardRepeatsAtomicBombThenEverySpaceshipIsOnCellOne [
 
 	| aGame result |
@@ -155,7 +158,7 @@ RepeatCardTest >> test04RepeatCardRepeatsAtomicBombThenEverySpaceshipIsOnCellOne
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
 
-{ #category : #repeat }
+{ #category : #'hyper jump' }
 RepeatCardTest >> test05RepeatCardRepeatsHyperJumpThenBothSpaceshipsMoveSameParsecs [
 
 	| aGame result aConversor values |
@@ -196,7 +199,7 @@ RepeatCardTest >> test05RepeatCardRepeatsHyperJumpThenBothSpaceshipsMoveSamePars
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
 
-{ #category : #repeat }
+{ #category : #'card dispenser' }
 RepeatCardTest >> test06RepeatCardRepeatsCardDispenserThenSpaceshipTwoCanPlayTwoAccelerationCards [
 
 	| aGame result |
@@ -237,7 +240,7 @@ RepeatCardTest >> test06RepeatCardRepeatsCardDispenserThenSpaceshipTwoCanPlayTwo
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
 
-{ #category : #repeat }
+{ #category : #wormhole }
 RepeatCardTest >> test07RepeatCardRepeatsWormholeThenSpaceshipOneGoesToWormhole [
 
 	| aGame result |
@@ -260,7 +263,7 @@ RepeatCardTest >> test07RepeatCardRepeatsWormholeThenSpaceshipOneGoesToWormhole 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
 
-{ #category : #repeat }
+{ #category : #'hyper gravity' }
 RepeatCardTest >> test08RepeatCardRepeatsHyperGravityThenSpaceshipMovesWithoutImpediment [
 
 	| aGame result |
@@ -282,7 +285,7 @@ RepeatCardTest >> test08RepeatCardRepeatsHyperGravityThenSpaceshipMovesWithoutIm
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
 
-{ #category : #repeat }
+{ #category : #'hyper gravity' }
 RepeatCardTest >> test09RepeatHyperGravityForSpaceshipTwoThenItCannotMoveBeacuseOfIt [
 
 	| aGame result |
@@ -318,7 +321,7 @@ RepeatCardTest >> test09RepeatHyperGravityForSpaceshipTwoThenItCannotMoveBeacuse
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
 
-{ #category : #repeat }
+{ #category : #'hyper gravity' }
 RepeatCardTest >> test10RepeatHyperGravityForSpaceshipTwoThenItCanMoveBeacuseOfThrowGreaterThenValue [
 
 	| aGame result |
@@ -350,6 +353,41 @@ RepeatCardTest >> test10RepeatHyperGravityForSpaceshipTwoThenItCanMoveBeacuseOfT
 	result := Dictionary new.
 	result at: 1 put: 8.
 	result at: 2 put: 7.
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]
+
+{ #category : #jailCell }
+RepeatCardTest >> test11RepeateJailForSpaceshipTwoThenItOnlyMovesWithMaxDiceThrow [
+
+	| aGame result |
+	aLoadedDie := LoadedDie of: #( 7 6 1 10 ).
+
+	collectionOfCells := OrderedCollection new.
+	30 timesRepeat: [ collectionOfCells add: Cell new ].
+
+	collectionOfCells at: 8 put: JailCell new.
+
+	aBoardCreator := BoardCreator
+		                 with: collectionOfCells
+		                 ofLaps: 2
+		                 withWormholeCreator: aWormholeCreator.
+
+	aGame := Game
+		         numberOfSpaceships: 2
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+
+	aGame moveSpaceship.
+	aGame spaceshipId: 1 useInstantCard: RepeatCard toDoEffectFor: 2.
+	aGame moveSpaceship.
+	aGame moveSpaceship.
+	aGame moveSpaceship.
+
+	result := Dictionary new.
+	result at: 1 put: 8.
+	result at: 2 put: 11.
 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]

@@ -94,6 +94,14 @@ Game >> doubleTurn [
 		but: currentSpaceship
 ]
 
+{ #category : #jailCell }
+Game >> freeSpaceship: aSpaceshipId [
+
+	| spaceshipToFree |
+	spaceshipToFree := spaceships detectSpaceshipWithId: aSpaceshipId.
+	spaceshipsTrapped removeKey: spaceshipToFree
+]
+
 { #category : #card }
 Game >> giveOneCardTo: aSpaceship [
 
@@ -189,7 +197,7 @@ Game >> moveSpaceship [
 	turnManager nextTurn
 ]
 
-{ #category : #hyperGravityCard }
+{ #category : #jailCell }
 Game >> putOnJail: aSpaceship [
 
 	| value |
@@ -207,9 +215,8 @@ Game >> reloadSpaceship [
 ]
 
 { #category : #card }
-Game >> removeTheCard: aCardToCancel andSaveTheLastInstantCardPlayed: aCancellationCard [
+Game >> removeTheCard: aCardToCancel [
 
-	aActiveDeck activate: aCancellationCard .
 	aActiveDeck removeACard: aCardToCancel
 ]
 
