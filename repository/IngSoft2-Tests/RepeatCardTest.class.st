@@ -39,7 +39,7 @@ RepeatCardTest >> setUp [
 ]
 
 { #category : #repeat }
-RepeatCardTest >> test18SpaceshipOneEntersBlackHoleAndSpaceshipTwoRepeatsEffectThenSpaceshipOneIsInPositionOne [
+RepeatCardTest >> test01SpaceshipOneEntersBlackHoleAndSpaceshipTwoRepeatsEffectThenSpaceshipOneIsInPositionOne [
 
 	| aGame result |
 	aLoadedDie := LoadedDie of: #( 5 ).
@@ -71,7 +71,7 @@ RepeatCardTest >> test18SpaceshipOneEntersBlackHoleAndSpaceshipTwoRepeatsEffectT
 ]
 
 { #category : #repeat }
-RepeatCardTest >> test19ReapeatCardRepeatsACellThenNothingChanges [
+RepeatCardTest >> test02ReapeatCardRepeatsACellThenNothingChanges [
 
 	| aGame result |
 	aLoadedDie := LoadedDie of: #( 9 ).
@@ -93,7 +93,7 @@ RepeatCardTest >> test19ReapeatCardRepeatsACellThenNothingChanges [
 ]
 
 { #category : #repeat }
-RepeatCardTest >> test20RepeatCardRepeatsMoonWalkThenSpaceshipOneMovesBackwards [
+RepeatCardTest >> test03RepeatCardRepeatsMoonWalkThenSpaceshipOneMovesBackwards [
 
 	| aGame result |
 	aWormholeCreator := WormholeCreator withBeginning: 2 andEnd: 3.
@@ -124,7 +124,7 @@ RepeatCardTest >> test20RepeatCardRepeatsMoonWalkThenSpaceshipOneMovesBackwards 
 ]
 
 { #category : #repeat }
-RepeatCardTest >> test21RepeatCardRepeatsAtomicBombThenEverySpaceshipIsOnCellOne [
+RepeatCardTest >> test04RepeatCardRepeatsAtomicBombThenEverySpaceshipIsOnCellOne [
 
 	| aGame result |
 	aLoadedDie := LoadedDie of: #( 4 ).
@@ -156,7 +156,7 @@ RepeatCardTest >> test21RepeatCardRepeatsAtomicBombThenEverySpaceshipIsOnCellOne
 ]
 
 { #category : #repeat }
-RepeatCardTest >> test22RepeatCardRepeatsHyperJumpThenBothSpaceshipsMoveSameParsecs [
+RepeatCardTest >> test05RepeatCardRepeatsHyperJumpThenBothSpaceshipsMoveSameParsecs [
 
 	| aGame result aConversor values |
 	aConversor := Conversor totalCells: 4 convertionValue: 8.
@@ -197,7 +197,7 @@ RepeatCardTest >> test22RepeatCardRepeatsHyperJumpThenBothSpaceshipsMoveSamePars
 ]
 
 { #category : #repeat }
-RepeatCardTest >> test23RepeatCardRepeatsCardDispenserThenSpaceshipTwoCanPlayTwoAccelerationCards [
+RepeatCardTest >> test06RepeatCardRepeatsCardDispenserThenSpaceshipTwoCanPlayTwoAccelerationCards [
 
 	| aGame result |
 	aLoadedDie := LoadedDie of: #( 3 3 3 3 80 ).
@@ -238,7 +238,7 @@ RepeatCardTest >> test23RepeatCardRepeatsCardDispenserThenSpaceshipTwoCanPlayTwo
 ]
 
 { #category : #repeat }
-RepeatCardTest >> test24RepeatCardRepeatsWormholeThenSpaceshipOneGoesToWormhole [
+RepeatCardTest >> test07RepeatCardRepeatsWormholeThenSpaceshipOneGoesToWormhole [
 
 	| aGame result |
 	aLoadedDie := LoadedDie of: #( 9 1 ).
@@ -261,7 +261,7 @@ RepeatCardTest >> test24RepeatCardRepeatsWormholeThenSpaceshipOneGoesToWormhole 
 ]
 
 { #category : #repeat }
-RepeatCardTest >> test26RepeatCardRepeatsHyperGravityThenSpaceshipMovesWithoutImpediment [
+RepeatCardTest >> test08RepeatCardRepeatsHyperGravityThenSpaceshipMovesWithoutImpediment [
 
 	| aGame result |
 	aLoadedDie := LoadedDie of: #( 7 1 1 ).
@@ -283,7 +283,7 @@ RepeatCardTest >> test26RepeatCardRepeatsHyperGravityThenSpaceshipMovesWithoutIm
 ]
 
 { #category : #repeat }
-RepeatCardTest >> test29RepeatHyperGravityForSpaceshipTwoThenItCannotMoveBeacuseOfIt [
+RepeatCardTest >> test09RepeatHyperGravityForSpaceshipTwoThenItCannotMoveBeacuseOfIt [
 
 	| aGame result |
 	aLoadedDie := LoadedDie of: #( 7 2 ).
@@ -319,7 +319,7 @@ RepeatCardTest >> test29RepeatHyperGravityForSpaceshipTwoThenItCannotMoveBeacuse
 ]
 
 { #category : #repeat }
-RepeatCardTest >> test30RepeatHyperGravityForSpaceshipTwoThenItCanMoveBeacuseOfThrowGreaterThenValue [
+RepeatCardTest >> test10RepeatHyperGravityForSpaceshipTwoThenItCanMoveBeacuseOfThrowGreaterThenValue [
 
 	| aGame result |
 	aLoadedDie := LoadedDie of: #( 7 6 ).

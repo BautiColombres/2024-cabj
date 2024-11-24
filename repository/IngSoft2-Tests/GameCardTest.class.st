@@ -35,7 +35,8 @@ GameCardTest >> setUp [
 				             RedoCard.
 				             RepeatCard.
 				             CancellationCard.
-				             ReverseCard })
+				             ReverseCard.
+				             SkipCard })
 ]
 
 { #category : #running }
@@ -437,6 +438,32 @@ GameCardTest >> test35TwoReverseCardsPlayedThenTurnOrderStaysTheSame [
 	result at: 2 put: 8.
 	result at: 3 put: 1.
 
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]
+
+{ #category : #skip }
+GameCardTest >> test36SkipCardPlayedThenSpaceshipThreeDoesntGetItsTurn [
+
+	| result aGame |
+	aLoadedDie := LoadedDie of: #( 7 7 7 ).
+
+	aGame := Game
+		         numberOfSpaceships: 4
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+
+	aGame moveSpaceship.
+	aGame moveSpaceship.
+	aGame spaceshipId: 1 useInstantCard: SkipCard toDoEffectFor: nil.
+	aGame moveSpaceship.
+
+	result := Dictionary new.
+	result at: 1 put: 8.
+	result at: 2 put: 8.
+	result at: 3 put: 1.
+	result at: 4 put: 8.
 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]

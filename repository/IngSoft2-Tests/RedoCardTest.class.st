@@ -39,7 +39,7 @@ RedoCardTest >> setUp [
 ]
 
 { #category : #acceleration }
-RedoCardTest >> test14TwoRedoCardsPlayedAfterAccelerationThenSpaceshipMovesThreeCellsMore [
+RedoCardTest >> test01TwoRedoCardsPlayedAfterAccelerationThenSpaceshipMovesThreeCellsMore [
 
 	| result aGame |
 	aLoadedDie := LoadedDie of: #( 7 7 ).
@@ -62,7 +62,7 @@ RedoCardTest >> test14TwoRedoCardsPlayedAfterAccelerationThenSpaceshipMovesThree
 ]
 
 { #category : #overload }
-RedoCardTest >> test15RedoCardPlayedAfterOverloadThenSpaceshipsAffectedHaveLessMovement [
+RedoCardTest >> test02RedoCardPlayedAfterOverloadThenSpaceshipsAffectedHaveLessMovement [
 
 	| result aGame |
 	aLoadedDie := LoadedDie of: #( 7 7 7 ).
@@ -88,7 +88,7 @@ RedoCardTest >> test15RedoCardPlayedAfterOverloadThenSpaceshipsAffectedHaveLessM
 ]
 
 { #category : #ally }
-RedoCardTest >> test16RedoCardPlayedAfterAllyThenSpaceshipsThreeAndFourShareFuelBeacuseOfIt [
+RedoCardTest >> test03RedoCardPlayedAfterAllyThenSpaceshipsThreeAndFourShareFuelBeacuseOfIt [
 
 	| result aGame |
 	aLoadedDie := LoadedDie of: #( 7 7 7 1 ).
@@ -119,7 +119,7 @@ RedoCardTest >> test16RedoCardPlayedAfterAllyThenSpaceshipsThreeAndFourShareFuel
 ]
 
 { #category : #cancellation }
-RedoCardTest >> test17TwoAccelerationCardsPlayThenACancellationAndARedoSoNoAccelerationEffectOccurs [
+RedoCardTest >> test04TwoAccelerationCardsPlayThenACancellationAndARedoSoNoAccelerationEffectOccurs [
 
 	| aGame result |
 	aLoadedDie := LoadedDie of: #( 7 7 7 1 ).
@@ -150,7 +150,7 @@ RedoCardTest >> test17TwoAccelerationCardsPlayThenACancellationAndARedoSoNoAccel
 ]
 
 { #category : #repeat }
-RedoCardTest >> test25RedoCardPlayedAfterRepeatCardThenCellEffectRepeatsTwice [
+RedoCardTest >> test05RedoCardPlayedAfterRepeatCardThenCellEffectRepeatsTwice [
 
 	| aGame result |
 	aLoadedDie := LoadedDie of: #( 9 5 10).
@@ -185,7 +185,7 @@ RedoCardTest >> test25RedoCardPlayedAfterRepeatCardThenCellEffectRepeatsTwice [
 ]
 
 { #category : #reverse }
-RedoCardTest >> test36RedoAReverseCardThenTurnOrderStaysNormal [
+RedoCardTest >> test06RedoAReverseCardThenTurnOrderStaysNormal [
 
 	| result aGame |
 	aLoadedDie := LoadedDie of: #( 7 7 ).

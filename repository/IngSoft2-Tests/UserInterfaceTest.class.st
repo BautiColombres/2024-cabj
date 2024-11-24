@@ -56,8 +56,10 @@ UserInterfaceTest >> setUp [
 					             RedoCard.
 					             RepeatCard.
 					             CancellationCard.
-					             ReverseCard })
-		            withProbabilitiesDistribution: #( 14 14 14 14 14 15 15 )
+					             ReverseCard.
+					             SkipCard })
+		            withProbabilitiesDistribution:
+		            #( 12 12 12 12 12 13 13 14 )
 ]
 
 { #category : #tests }

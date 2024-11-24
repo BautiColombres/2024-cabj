@@ -209,6 +209,12 @@ Game >> reverseTurnOrder [
 	turnManager nextTurn
 ]
 
+{ #category : #skipCard }
+Game >> skipTurn [
+
+	turnManager nextTurn
+]
+
 { #category : #card }
 Game >> spaceshipId: anId useInstantCard: aCard toDoEffectFor: anObject [
 
