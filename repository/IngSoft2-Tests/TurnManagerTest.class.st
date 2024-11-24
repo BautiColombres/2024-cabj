@@ -149,3 +149,72 @@ TurnManagerTest >> test08OneSpaceshipLostOneTurnAndThenRecoversIt [
 	Spaceship initialize.
 	self assert: currentSpaceshipId equals: 1
 ]
+
+{ #category : #tests }
+TurnManagerTest >> test09WhenReverseTurnOrderThenSpaceshipPlayingThreeInsteadOfTwo [
+
+	| aTurnManager collectionOfSpaceships currentSpaceshipId |
+	collectionOfSpaceships := CollectionOfSpaceships
+		                          numberOfSpaceships: 3
+		                          withAmountOfFuel: 5.
+
+	aTurnManager := TurnManager manage: collectionOfSpaceships.
+	aTurnManager reverseTurnOrder.
+	aTurnManager nextTurn.
+	currentSpaceshipId := aTurnManager spaceshipPlaying id.
+
+	Spaceship initialize.
+	self assert: currentSpaceshipId equals: 3
+]
+
+{ #category : #tests }
+TurnManagerTest >> test10DoblueReverseThenTurnOrderGoesBackToNormal [
+
+	| aTurnManager collectionOfSpaceships currentSpaceshipId |
+	collectionOfSpaceships := CollectionOfSpaceships
+		                          numberOfSpaceships: 3
+		                          withAmountOfFuel: 5.
+
+	aTurnManager := TurnManager manage: collectionOfSpaceships.
+	aTurnManager reverseTurnOrder.
+	aTurnManager nextTurn.
+	aTurnManager reverseTurnOrder.
+	aTurnManager nextTurn.
+	currentSpaceshipId := aTurnManager spaceshipPlaying id.
+
+	Spaceship initialize.
+	self assert: currentSpaceshipId equals: 1
+]
+
+{ #category : #tests }
+TurnManagerTest >> test11PreviousTurnThenGoesBackToPreviousSpaceship [
+
+	| aTurnManager collectionOfSpaceships currentSpaceshipId |
+	collectionOfSpaceships := CollectionOfSpaceships
+		                          numberOfSpaceships: 3
+		                          withAmountOfFuel: 5.
+
+	aTurnManager := TurnManager manage: collectionOfSpaceships.
+	aTurnManager nextTurn.
+	aTurnManager previousTurn.
+	currentSpaceshipId := aTurnManager spaceshipPlaying id.
+
+	Spaceship initialize.
+	self assert: currentSpaceshipId equals: 1
+]
+
+{ #category : #tests }
+TurnManagerTest >> test12PreviousTurnAtStartItsTheSameAsCurrentTurn [
+
+	| aTurnManager collectionOfSpaceships currentSpaceshipId |
+	collectionOfSpaceships := CollectionOfSpaceships
+		                          numberOfSpaceships: 3
+		                          withAmountOfFuel: 5.
+
+	aTurnManager := TurnManager manage: collectionOfSpaceships.
+	aTurnManager previousTurn.
+	currentSpaceshipId := aTurnManager spaceshipPlaying id.
+
+	Spaceship initialize.
+	self assert: currentSpaceshipId equals: 1
+]

@@ -13,14 +13,14 @@ RepeatCard class >> toDoEffectFor: aSpaceshipId [
 { #category : #accessing }
 RepeatCard >> activateEffectOn: aGame forSpaceship: anId [
 
-	| spaceshipToApplyEffect cellToEnter cellOfSpaceship |
+	| spaceshipToApplyEffect cellToEnter |
 	aGame activateCard: self.
-	spaceshipToApplyEffect := aGame spaceships detectSpaceshipWithId: spaceshipAffected.
+	spaceshipToApplyEffect := aGame spaceships detectSpaceshipWithId:
+		                          spaceshipAffected.
 
 	cellToEnter := aGame lastCellEffect.
 
-	cellOfSpaceship := cellToEnter applyEffectTo:
-		                   spaceshipToApplyEffect on: aGame.
+	cellToEnter applyEffectTo: spaceshipToApplyEffect on: aGame
 ]
 
 { #category : #initialization }
