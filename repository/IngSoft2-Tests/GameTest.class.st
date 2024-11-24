@@ -15,7 +15,7 @@ Class {
 
 { #category : #running }
 GameTest >> setUp [
-	
+
 	super setUp.
 	aWormholeCreator := WormholeCreator withBeginning: 2 andEnd: 3.
 	collectionOfCells := OrderedCollection new.
@@ -30,14 +30,15 @@ GameTest >> setUp [
 	aCollectionOfDice := Dice of: dice.
 
 	gameDeck := EffectManager
-		            manage: (OrderedCollection
-				             with: AccelerationCard new
-				             with: AllyCard new
-				             with: OverloadCard new
-				             with: RedoCard new
-				             with: RepeatCard new
-				             with: CancellationCard new)
-		            withProbabilitiesDistribution: #( 16 16 17 17 17 17 )
+		            manage: (OrderedCollection withAll: {
+					             AccelerationCard.
+					             AllyCard.
+					             OverloadCard.
+					             RedoCard.
+					             RepeatCard.
+					             CancellationCard.
+					             ReverseCard })
+		            withProbabilitiesDistribution: #( 14 14 14 14 14 15 15 )
 ]
 
 { #category : #asserting }
