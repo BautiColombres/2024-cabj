@@ -108,6 +108,16 @@ Game >> giveOneCardTo: aSpaceship [
 	(spaceshipsCardHands at: aSpaceship id) gainACard
 ]
 
+{ #category : #jailCell }
+Game >> hyperSpaceJump: aSpaceship [
+
+	| aPosition aNumberOfMovements |
+	aPosition := aSpaceship position.
+	aNumberOfMovements := self checkMoveIsPossible: 4 for: aSpaceship.
+	aPosition updateCell: aNumberOfMovements.
+	aPosition adjustPositionWith: finishLine
+]
+
 { #category : #initialization }
 Game >> initializeNumberOfSpaceships: anAmount with: aBoardCreator playWith: aCollectionOfDice andGameDeck: anEffectManager [
 

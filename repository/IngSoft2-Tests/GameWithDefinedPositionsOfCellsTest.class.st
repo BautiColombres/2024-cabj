@@ -397,3 +397,36 @@ GameWithDefinedPositionsOfCellsTest >> test11SpaceshipGoesToJailThenOnlyMovesWhe
 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
+
+{ #category : #'hyper space jump' }
+GameWithDefinedPositionsOfCellsTest >> test12SpaceshipEnterHyperSpaceJumpThenItMovesFourCellsWithoutUsingFuel [
+
+	| result aGame |
+	aWormholeCreator := WormholeCreator withBeginning: 2 andEnd: 3.
+	collectionOfCells := OrderedCollection new.
+
+	30 timesRepeat: [ collectionOfCells add: Cell new ].
+
+	collectionOfCells at: 8 put: HyperSpaceJumpCell new.
+
+	aBoardCreator := BoardCreator
+		                 with: collectionOfCells
+		                 ofLaps: 2
+		                 withWormholeCreator: aWormholeCreator.
+
+	aLoadedDie := LoadedDie of: #( 7 6 ).
+
+	aGame := Game
+		         numberOfSpaceships: 1
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+
+	aGame moveSpaceship.
+	aGame moveSpaceship.
+
+	result := Dictionary new.
+	result at: 1 put: 18.
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]

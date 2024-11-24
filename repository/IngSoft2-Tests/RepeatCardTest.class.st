@@ -391,3 +391,35 @@ RepeatCardTest >> test11RepeateJailForSpaceshipTwoThenItOnlyMovesWithMaxDiceThro
 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]
+
+{ #category : #'hyper space jump' }
+RepeatCardTest >> test12RepeatHyperSpaceJumpThenSpaceshipTwoMovesFourCells [
+
+	| aGame result |
+	aLoadedDie := LoadedDie of: #( 7 ).
+
+	collectionOfCells := OrderedCollection new.
+	30 timesRepeat: [ collectionOfCells add: Cell new ].
+
+	collectionOfCells at: 8 put: HyperSpaceJumpCell new.
+
+	aBoardCreator := BoardCreator
+		                 with: collectionOfCells
+		                 ofLaps: 2
+		                 withWormholeCreator: aWormholeCreator.
+
+	aGame := Game
+		         numberOfSpaceships: 2
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+
+	aGame moveSpaceship.
+	aGame spaceshipId: 2 useInstantCard: RepeatCard toDoEffectFor: 2.
+
+	result := Dictionary new.
+	result at: 1 put: 12.
+	result at: 2 put: 5.
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]
