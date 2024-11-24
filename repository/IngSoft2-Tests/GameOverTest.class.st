@@ -10,7 +10,7 @@ GameOverTest >> should: anErrorBlock raise: anErrorClass withMessage: anErrorMes
 ]
 
 { #category : #tests }
-GameOverTest >> testGameOverNextTurnIsInvalid [
+GameOverTest >> testGameOverThrowIsInvalid [
 
-self should: [(GameOver new) nextTurn] raise: Error withMessage:'The Game is Over'.
+self should: [(GameOver new) throw] raise: Error withMessage:'The Game is Over'.
 ]

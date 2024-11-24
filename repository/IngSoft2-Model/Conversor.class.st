@@ -15,7 +15,7 @@ Conversor class >> totalCells: anAmountOfCells convertionValue: aConvertionValue
 		  convertionValue: aConvertionValue
 ]
 
-{ #category : #actions }
+{ #category : #convertion }
 Conversor >> convert: aMetric [
 
 	| valueToConvert |

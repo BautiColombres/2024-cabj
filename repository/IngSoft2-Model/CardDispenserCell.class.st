@@ -4,7 +4,7 @@ Class {
 	#category : #'IngSoft2-Model'
 }
 
-{ #category : #action }
+{ #category : #effect }
 CardDispenserCell >> applyEffectTo: aSpaceship on: aGame [
 
 	aGame giveOneCardTo: aSpaceship

@@ -14,13 +14,13 @@ WormholeCreator class >> withBeginning: beginning andEnd: ending [
 	^ self new initializeWithBeginning: beginning andEnd: ending
 ]
 
-{ #category : #accessing }
+{ #category : #'set and get' }
 WormholeCreator >> beginning [
 
 	^ beginningWormhole
 ]
 
-{ #category : #accessing }
+{ #category : #'set and get' }
 WormholeCreator >> ending [
 
 	^ endingWormhole

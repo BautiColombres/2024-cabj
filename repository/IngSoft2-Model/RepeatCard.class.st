@@ -10,7 +10,7 @@ RepeatCard class >> toDoEffectFor: aSpaceshipId [
 	^ self new initializeToDoEffectFor: aSpaceshipId
 ]
 
-{ #category : #accessing }
+{ #category : #effect }
 RepeatCard >> activateEffectOn: aGame forSpaceship: anId [
 
 	| spaceshipToApplyEffect cellToEnter |
@@ -21,10 +21,4 @@ RepeatCard >> activateEffectOn: aGame forSpaceship: anId [
 	cellToEnter := aGame lastCellEffect.
 
 	cellToEnter applyEffectTo: spaceshipToApplyEffect on: aGame
-]
-
-{ #category : #initialization }
-RepeatCard >> initializeToDoEffectFor: aSpaceshipId [
-
-	spaceshipAffected := aSpaceshipId
 ]

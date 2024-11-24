@@ -6,7 +6,7 @@ Class {
 
 { #category : #effect }
 ReverseCard >> activateEffectOn: aGame forSpaceship: anId [
-	
+
 	aGame activateCard: self.
-	aGame reverseTurnOrder.
+	aGame reverseTurnOrder
 ]

@@ -13,16 +13,16 @@ MoonWalkCell class >> withValueToMove: aValue [
 	^ self new initializeWithValueToMove: aValue
 ]
 
-{ #category : #action }
-MoonWalkCell >> applyEffectTo: aSpaceship on:aGame [
+{ #category : #effect }
+MoonWalkCell >> applyEffectTo: aSpaceship on: aGame [
 
 	aGame
 		moveAllTheSpaceshipsExcept: aSpaceship
-		withValueToMove: value negated.
+		withValueToMove: value negated
 ]
 
 { #category : #initialization }
 MoonWalkCell >> initializeWithValueToMove: aValue [
 
-	value := aValue.
+	value := aValue
 ]

@@ -14,9 +14,9 @@ Wormhole class >> in: aPosition to: anotherPosition [
 	^ self new initializeIn: aPosition to: anotherPosition
 ]
 
-{ #category : #action }
+{ #category : #effect }
 Wormhole >> applyEffectTo: aSpaceship on: aGame [
-	
+
 	| numberOfMovements cellOfSpaceship |
 	cellOfSpaceship := aSpaceship position cell.
 	numberOfMovements := positionToGoTo - cellOfSpaceship.

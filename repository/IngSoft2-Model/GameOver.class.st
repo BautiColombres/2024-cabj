@@ -4,13 +4,7 @@ Class {
 	#category : #'IngSoft2-Model'
 }
 
-{ #category : #action }
-GameOver >> nextTurn [
-
-	Error signal: 'The Game is Over'
-]
-
-{ #category : #action }
+{ #category : #error }
 GameOver >> throw [
 
 	Error signal: 'The Game is Over'

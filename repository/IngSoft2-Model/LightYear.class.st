@@ -13,7 +13,7 @@ LightYear class >> ofValue: aValue [
 	^ self new initializeOfValue: aValue
 ]
 
-{ #category : #converting }
+{ #category : #convertion }
 LightYear >> convertToParsec [
 
 	^ value / 3

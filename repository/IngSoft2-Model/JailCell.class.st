@@ -4,7 +4,7 @@ Class {
 	#category : #'IngSoft2-Model'
 }
 
-{ #category : #action }
+{ #category : #effect }
 JailCell >> applyEffectTo: aSpaceship on: aGame [
 
 	aGame putOnJail: aSpaceship

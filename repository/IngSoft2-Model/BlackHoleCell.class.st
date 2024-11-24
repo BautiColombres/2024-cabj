@@ -4,7 +4,7 @@ Class {
 	#category : #'IngSoft2-Model'
 }
 
-{ #category : #action }
+{ #category : #effect }
 BlackHoleCell >> applyEffectTo: aSpaceship on: aGame [
 
 	aGame move: aSpaceship a: -4
