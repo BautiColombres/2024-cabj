@@ -32,31 +32,27 @@ Game >> activateCard: aCard [
 	aActiveDeck activate: aCard
 ]
 
-{ #category : #allyCard }
+{ #category : #ally }
 Game >> ally: spaceshipIdOne with: spaceshipIdTwo [
-	
+
 	| spaceshipOne spaceshipTwo |
-	
 	spaceshipOne := spaceships detectSpaceshipWithId: spaceshipIdOne.
 	spaceshipTwo := spaceships detectSpaceshipWithId: spaceshipIdTwo.
 	anAllyTankManager ally: spaceshipOne with: spaceshipTwo
 ]
 
-{ #category : #hyperGravityCard }
+{ #category : #'hyper gravity' }
 Game >> applyHyperGravityOn: aSpaceship withValue: value [
-	
-	spaceshipsTrapped at: aSpaceship put: value
 
-	
-	
+	spaceshipsTrapped at: aSpaceship put: value
 ]
 
-{ #category : #movement }
+{ #category : #fuel }
 Game >> checkAndHandleFuelDepletion: aSpaceship [
 
 	| spaceshipsWithoutFuel |
-	spaceshipsWithoutFuel := anAllyTankManager spaceshipsWithEmptyFuelTank:
-		              aSpaceship.
+	spaceshipsWithoutFuel := anAllyTankManager
+		                         spaceshipsWithEmptyFuelTank: aSpaceship.
 	spaceshipsWithoutFuel do: [ :spaceship |
 		turnManager lostTurns: 2 by: spaceship id.
 		spaceship resetToOne.
@@ -84,7 +80,7 @@ Game >> checkMoveIsPossible: throwResult for: aSpaceship [
 	^ aNumberOfMovements
 ]
 
-{ #category : #skipCard }
+{ #category : #turns }
 Game >> doubleTurn [
 
 	| currentSpaceship |
@@ -94,7 +90,7 @@ Game >> doubleTurn [
 		but: currentSpaceship
 ]
 
-{ #category : #jailCell }
+{ #category : #jail }
 Game >> freeSpaceship: aSpaceshipId [
 
 	| spaceshipToFree |
@@ -108,7 +104,7 @@ Game >> giveOneCardTo: aSpaceship [
 	(spaceshipsCardHands at: aSpaceship id) gainACard
 ]
 
-{ #category : #jailCell }
+{ #category : #'hyper space jump' }
 Game >> hyperSpaceJump: aSpaceship [
 
 	| aPosition aNumberOfMovements |
@@ -168,9 +164,7 @@ Game >> move: spaceship a: numberOfMovements [
 
 	positionOfSpaceship := spaceship position.
 
-	anAllyTankManager
-		spaceship: spaceship
-		wantsToUse: aNumberOfMovements.
+	anAllyTankManager spaceship: spaceship wantsToUse: aNumberOfMovements.
 
 	spaceship move: aNumberOfMovements.
 
@@ -179,7 +173,7 @@ Game >> move: spaceship a: numberOfMovements [
 	self checkAndHandleFuelDepletion: spaceship
 ]
 
-{ #category : #moonWalkCard }
+{ #category : #'moon walk' }
 Game >> moveAllTheSpaceshipsExcept: aSpaceship withValueToMove: aNumberOfMovements [
 
 	spaceships
@@ -188,7 +182,7 @@ Game >> moveAllTheSpaceshipsExcept: aSpaceship withValueToMove: aNumberOfMovemen
 ]
 
 { #category : #movement }
-Game >> moveSpaceship [
+Game >> playTurn [
 
 	| positionOfSpaceship throwResult currentSpaceship |
 	throwResult := self throwDiceAndCheckEffects.
@@ -207,7 +201,7 @@ Game >> moveSpaceship [
 	turnManager nextTurn
 ]
 
-{ #category : #jailCell }
+{ #category : #jail }
 Game >> putOnJail: aSpaceship [
 
 	| value |
@@ -215,8 +209,8 @@ Game >> putOnJail: aSpaceship [
 	spaceshipsTrapped at: aSpaceship put: value
 ]
 
-{ #category : #movement }
-Game >> reloadSpaceship [
+{ #category : #fuel }
+Game >> reloadSpaceshipAndLooseTurn [
 
 	| currentSpaceship |
 	currentSpaceship := turnManager spaceshipPlaying.
@@ -224,19 +218,19 @@ Game >> reloadSpaceship [
 	currentSpaceship := turnManager nextTurn
 ]
 
-{ #category : #card }
+{ #category : #cancellation }
 Game >> removeTheCard: aCardToCancel [
 
 	aActiveDeck removeACard: aCardToCancel
 ]
 
-{ #category : #atomicBombCard }
+{ #category : #'atomic bomb' }
 Game >> resetSpaceshipsToCellOne [
 
 	spaceships each: [ :spaceship | spaceship resetToOne ]
 ]
 
-{ #category : #reverseCard }
+{ #category : #turns }
 Game >> reverseTurnOrder [
 
 	turnManager previousTurn.
@@ -244,7 +238,7 @@ Game >> reverseTurnOrder [
 	turnManager nextTurn
 ]
 
-{ #category : #skipCard }
+{ #category : #turns }
 Game >> skipTurn [
 
 	turnManager nextTurn
@@ -266,7 +260,7 @@ Game >> spaceships [
 	^ spaceships 
 ]
 
-{ #category : #allyCard }
+{ #category : #ally }
 Game >> stopAlly: aSpaceshipId [
 
 	| spaceshipOne |

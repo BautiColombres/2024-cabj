@@ -49,9 +49,9 @@ UserInterface >> initializeNumberOfSpaceships: anAmount with: aBoardCreator play
 ]
 
 { #category : #spaceship }
-UserInterface >> moveSpaceship [
+UserInterface >> playTurn [
 
-	^ aGame moveSpaceship
+	^ aGame playTurn
 ]
 
 { #category : #results }
@@ -65,9 +65,9 @@ UserInterface >> rankingOfSpaceships [
 ]
 
 { #category : #spaceship }
-UserInterface >> reloadSpaceship [
+UserInterface >> reloadSpaceshipAndLooseTurn [
 
-	aGame reloadSpaceship
+	aGame reloadSpaceshipAndLooseTurn
 ]
 
 { #category : #card }
