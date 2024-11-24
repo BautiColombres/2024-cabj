@@ -57,9 +57,10 @@ GameWithDefinedPositionsOfCellsTest >> setUp [
 					             RepeatCard.
 					             CancellationCard.
 					             ReverseCard.
-					             SkipCard })
+					             SkipCard.
+					             DoubleCard })
 		            withProbabilitiesDistribution:
-		            #( 12 12 12 12 12 13 13 14 )
+		            #( 12 11 11 11 11 11 11 11 11 )
 ]
 
 { #category : #'atomic bomb' }

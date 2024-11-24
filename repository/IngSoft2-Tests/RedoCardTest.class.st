@@ -35,7 +35,9 @@ RedoCardTest >> setUp [
 				             RedoCard.
 				             RepeatCard.
 				             CancellationCard.
-				             ReverseCard })
+				             ReverseCard.
+				             SkipCard.
+				             DoubleCard })
 ]
 
 { #category : #acceleration }
@@ -204,6 +206,59 @@ RedoCardTest >> test06RedoAReverseCardThenTurnOrderStaysNormal [
 	result := Dictionary new.
 	result at: 1 put: 8.
 	result at: 2 put: 8.
+	result at: 3 put: 1.
+
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]
+
+{ #category : #reverse }
+RedoCardTest >> test07RedoASkipCardThenTwoTurnsAreSkipped [
+
+	| result aGame |
+	aLoadedDie := LoadedDie of: #( 7 7 10 ).
+
+	aGame := Game
+		         numberOfSpaceships: 3
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+
+	aGame moveSpaceship.
+	aGame spaceshipId: 3 useInstantCard: SkipCard toDoEffectFor: nil.
+	aGame spaceshipId: 1 useInstantCard: RedoCard toDoEffectFor: nil.
+	aGame moveSpaceship.
+
+	result := Dictionary new.
+	result at: 1 put: 15.
+	result at: 2 put: 1.
+	result at: 3 put: 1.
+
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]
+
+{ #category : #reverse }
+RedoCardTest >> test08RedoADoubleCardThenSpaceshipOnePlaysThreeTimesInARow [
+
+	| result aGame |
+	aLoadedDie := LoadedDie of: #( 7 7 7 15 ).
+
+	aGame := Game
+		         numberOfSpaceships: 3
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+
+	aGame spaceshipId: 1 useInstantCard: DoubleCard toDoEffectFor: nil.
+	aGame moveSpaceship.
+	aGame spaceshipId: 1 useInstantCard: RedoCard toDoEffectFor: nil.
+	aGame moveSpaceship.
+	aGame moveSpaceship.
+
+	result := Dictionary new.
+	result at: 1 put: 22.
+	result at: 2 put: 1.
 	result at: 3 put: 1.
 
 

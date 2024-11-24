@@ -84,6 +84,16 @@ Game >> checkMoveIsPossible: throwResult for: aSpaceship [
 	^ aNumberOfMovements
 ]
 
+{ #category : #skipCard }
+Game >> doubleTurn [
+
+	| currentSpaceship |
+	currentSpaceship := turnManager spaceshipPlaying.
+	spaceships
+		each: [ :spaceship | turnManager lostTurns: 1 by: spaceship id ]
+		but: currentSpaceship
+]
+
 { #category : #card }
 Game >> giveOneCardTo: aSpaceship [
 
