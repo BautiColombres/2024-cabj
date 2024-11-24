@@ -10,8 +10,8 @@ Class {
 		'dice',
 		'spaceships',
 		'cellToEnter',
-		'spaceshipsWithHyperGravity',
-		'anAllyTankManager'
+		'anAllyTankManager',
+		'spaceshipsTrapped'
 	],
 	#category : #'IngSoft2-Model'
 }
@@ -45,7 +45,7 @@ Game >> ally: spaceshipIdOne with: spaceshipIdTwo [
 { #category : #hyperGravityCard }
 Game >> applyHyperGravityOn: aSpaceship withValue: value [
 	
-	spaceshipsWithHyperGravity at: aSpaceship put: value
+	spaceshipsTrapped at: aSpaceship put: value
 
 	
 	
@@ -70,12 +70,12 @@ Game >> checkMoveIsPossible: throwResult for: aSpaceship [
 	aNumberOfMovements := throwResult.
 	positionOfSpaceship := aSpaceship position.
 
-	(spaceshipsWithHyperGravity includesKey: aSpaceship) ifTrue: [
-		throwResult < (spaceshipsWithHyperGravity at: aSpaceship)
+	(spaceshipsTrapped includesKey: aSpaceship) ifTrue: [
+		throwResult < (spaceshipsTrapped at: aSpaceship)
 			ifTrue: [
 				aNumberOfMovements := 0.
 				^ aNumberOfMovements ]
-			ifFalse: [ spaceshipsWithHyperGravity removeKey: aSpaceship ] ].
+			ifFalse: [ spaceshipsTrapped removeKey: aSpaceship ] ].
 
 	aNumberOfMovements := positionOfSpaceship
 		                      adjustMovementFor: aNumberOfMovements
@@ -123,7 +123,7 @@ Game >> initializeNumberOfSpaceships: anAmount with: aBoardCreator playWith: aCo
 
 	turnManager := TurnManager manage: spaceships.
 
-	spaceshipsWithHyperGravity := Dictionary new.
+	spaceshipsTrapped := Dictionary new.
 
 	board := aBoardCreator createBoard
 ]
@@ -187,6 +187,14 @@ Game >> moveSpaceship [
 		^ self spaceships positionsOfSpaceships ].
 
 	turnManager nextTurn
+]
+
+{ #category : #hyperGravityCard }
+Game >> putOnJail: aSpaceship [
+
+	| value |
+	value := dice amountOfFaces.
+	spaceshipsTrapped at: aSpaceship put: value
 ]
 
 { #category : #movement }
