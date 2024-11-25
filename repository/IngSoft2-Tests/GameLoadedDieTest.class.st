@@ -44,8 +44,13 @@ GameLoadedDieTest >> setUp [
 ]
 
 { #category : #asserting }
-GameLoadedDieTest >> should: anErrorBlock raise: anErrorClass withMessage: anErrorMessage [ 
-	self should: anErrorBlock raise: anErrorClass withExceptionDo: [ :error | self assert: error messageText equals: anErrorMessage ]
+GameLoadedDieTest >> should: anErrorBlock raise: anErrorClass withMessage: anErrorMessage [
+
+	self
+		should: anErrorBlock
+		raise: anErrorClass
+		withExceptionDo: [ :error |
+		self assert: error messageText equals: anErrorMessage ]
 ]
 
 { #category : #spaceship }
@@ -59,9 +64,9 @@ GameLoadedDieTest >> test01GameMovesSpaceshipTwiceWithLoadedDieSequenceSixAndFiv
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-		
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 12.
@@ -86,7 +91,7 @@ GameLoadedDieTest >> test02GameMovesSpaceshipFallsOnWormholeThenPositionIsTheOth
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 8.
 	self assert: aGame spaceships cellsOfSpaceships equals: result
@@ -107,7 +112,7 @@ GameLoadedDieTest >> test03WhenSpaceshipReachesTheFinishLineThenIsGameLoadedDieO
 
 	resultOfGame := Dictionary new.
 	resultOfGame at: 1 put: (Position startGameWithCell: 15 andLap: 1).
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	self
 		assert: aGame spaceships positionsOfSpaceships
@@ -125,9 +130,9 @@ GameLoadedDieTest >> test04TwoSpaceshipsMovesThreeTimesThenTheFirstOnesPositionI
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 12.
@@ -146,11 +151,11 @@ GameLoadedDieTest >> test05FirstSpaceshipWinsThenSecondSpaceshipCannotPlay [
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 	self
-		should: [ aGame moveSpaceship ]
+		should: [ aGame playTurn ]
 		raise: Error
 		withMessage: 'The Game is Over'
 ]
@@ -170,10 +175,10 @@ GameLoadedDieTest >> test06SpaceshipOneWinsThenResultOfGameShowsPositions [
 	resultOfGame := Dictionary new.
 	resultOfGame at: 1 put: (Position startGameWithCell: 15 andLap: 1).
 	resultOfGame at: 2 put: (Position startGameWithCell: 7 andLap: 1).
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 
-	self assert: aGame moveSpaceship equals: resultOfGame
+	self assert: aGame playTurn equals: resultOfGame
 ]
 
 { #category : #position }
@@ -185,7 +190,7 @@ GameLoadedDieTest >> test07WhenOneSapeshipWinsThenGetWinnerReturnsItsID [
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	self assert: aGame winner equals: 1
 ]
@@ -201,8 +206,8 @@ GameLoadedDieTest >> test08WhenTwoSpaceshipsPlayAndTheSecondOneWinsThenGetWinner
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 
 	self assert: aGame winner equals: 2
 ]
@@ -218,8 +223,8 @@ GameLoadedDieTest >> test09WhenASpaceshipLosesATurnThenGoesToStartingPosition [
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 1.
 	self assert: aGame spaceships cellsOfSpaceships equals: result
@@ -237,9 +242,9 @@ GameLoadedDieTest >> test10WhenOneSpaceshipLosesFuelThenItMovesAfterTwoLostTurns
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 4.
@@ -259,10 +264,10 @@ GameLoadedDieTest >> test11WhenASpaceshipDecidestToLooseATurnThenRechargesTheFue
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame reloadSpaceship.
+	aGame playTurn.
+	aGame reloadSpaceshipAndLooseTurn.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 7.
 
@@ -280,12 +285,12 @@ GameLoadedDieTest >> test12WhenTheSpaceshipOneRunOutOfFuelThenTheSecondSpaceship
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame reloadSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
+	aGame reloadSpaceshipAndLooseTurn.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 1.
 	result at: 2 put: 7.
@@ -309,10 +314,10 @@ GameLoadedDieTest >> test13SpaceshipMovesOneLapAroundTheBoardThenPositionIsInLap
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame reloadSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame reloadSpaceshipAndLooseTurn.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 2.
 
@@ -335,12 +340,12 @@ GameLoadedDieTest >> test14WhenASpaceshipFallsInTheFirstCellThenDoesntLooseTwoTu
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame reloadSpaceship.
-	aGame moveSpaceship.
-	aGame reloadSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame reloadSpaceshipAndLooseTurn.
+	aGame playTurn.
+	aGame reloadSpaceshipAndLooseTurn.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: (Position startGameWithCell: 6 andLap: 2).
 	self assert: aGame spaceships positionsOfSpaceships equals: result
@@ -366,9 +371,9 @@ GameLoadedDieTest >> test16WhenTheGameFinishThenWeGetTeLapsOfTheSpaceships [
 	resultOfLaps := Dictionary new.
 	resultOfLaps at: 1 put: 2.
 	resultOfLaps at: 2 put: 1.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	self assert: aGame spaceships lapsOfSpaceships equals: resultOfLaps
 ]
@@ -393,10 +398,10 @@ GameLoadedDieTest >> test17WhenTheGameEndsThenReturnsThePositionWithTheLapOfEach
 	resultOfGame := Dictionary new.
 	resultOfGame at: 1 put: (Position startGameWithCell: 15 andLap: 2).
 	resultOfGame at: 2 put: (Position startGameWithCell: 6 andLap: 1).
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 
-	self assert: aGame moveSpaceship equals: resultOfGame
+	self assert: aGame playTurn equals: resultOfGame
 ]
 
 { #category : #position }
@@ -412,9 +417,9 @@ GameLoadedDieTest >> test18WhenTheSpaceshipTwoIsInTheFirstPlaceTheSpaceshipOneIs
 		         andGameDeck: gameDeck.
 
 	rankingOfSpaceships := OrderedCollection with: 2 with: 1 with: 3.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	idRanking := aGame spaceships ranking collect: [ :spaceship |
 		             spaceship id ].
@@ -434,8 +439,8 @@ GameLoadedDieTest >> test20SpaceshipGainsCapacityOfFuelBeacuseOfThrowingMaxResul
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame reloadSpaceship.
+	aGame playTurn.
+	aGame reloadSpaceshipAndLooseTurn.
 
 	spaceship := aGame spaceships ranking at: 1.
 
@@ -453,11 +458,11 @@ GameLoadedDieTest >> test21SpacshipOneLoadsFuelSpaceshipTwoLoosesTurnsThenOneMov
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame reloadSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame reloadSpaceshipAndLooseTurn.
+	aGame playTurn.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 7.
 	result at: 2 put: 1.
@@ -476,7 +481,7 @@ GameLoadedDieTest >> test22SpaceshipLoosesOneFuelBecauseOfMaxDiceThrow [
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	spaceship := aGame spaceships ranking at: 1.
 

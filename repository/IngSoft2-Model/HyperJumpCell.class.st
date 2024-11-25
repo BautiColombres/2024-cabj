@@ -16,7 +16,7 @@ HyperJumpCell class >> withConversor: aConversor andValues: aCollection [
 	^ self new initializeWithConversor: aConversor andValues: aCollection
 ]
 
-{ #category : #action }
+{ #category : #effect }
 HyperJumpCell >> applyEffectTo: aSpaceship on: aGame [
 
 	| convertionOfNextValue |
@@ -34,7 +34,7 @@ HyperJumpCell >> initializeWithConversor: aConversor andValues: aCollection [
 	currentValue := collectionOfValues at: 1
 ]
 
-{ #category : #accessing }
+{ #category : #collection }
 HyperJumpCell >> nextValue [
 
 	| currentIndex nextIndex |

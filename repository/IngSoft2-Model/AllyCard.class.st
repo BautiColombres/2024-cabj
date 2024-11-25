@@ -17,7 +17,7 @@ AllyCard >> = aCard [
 	^ compareResult
 ]
 
-{ #category : #accessing }
+{ #category : #effect }
 AllyCard >> activateEffectOn: aGame forSpaceship: anId [
 
 	game := aGame.
@@ -26,7 +26,7 @@ AllyCard >> activateEffectOn: aGame forSpaceship: anId [
 	aGame ally: anId with: spaceshipAffected
 ]
 
-{ #category : #'set and get' }
+{ #category : #ally }
 AllyCard >> ally [
 
 	^ spaceshipAffected 
@@ -35,5 +35,5 @@ AllyCard >> ally [
 { #category : #action }
 AllyCard >> deactivate [
 
-	game stopAlly: spaceshipId.
+	game stopAlly: spaceshipId
 ]

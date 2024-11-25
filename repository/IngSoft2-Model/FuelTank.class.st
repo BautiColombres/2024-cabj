@@ -14,7 +14,7 @@ FuelTank class >> fullWith: anAmountOfFuel [
 	^ self new initializeFullWith: anAmountOfFuel
 ]
 
-{ #category : #action }
+{ #category : #capacity }
 FuelTank >> changeCapacity: aNumber [
 
 	capacity := capacity + aNumber
@@ -24,7 +24,7 @@ FuelTank >> changeCapacity: aNumber [
 FuelTank >> initializeFullWith: anAmountOfFuel [
 
 	fuel := anAmountOfFuel.
-	capacity := anAmountOfFuel.
+	capacity := anAmountOfFuel
 ]
 
 { #category : #asserting }
@@ -33,7 +33,7 @@ FuelTank >> isEmpty [
 	^ fuel <= 0
 ]
 
-{ #category : #action }
+{ #category : #fuel }
 FuelTank >> loadFuel: anAmountOfFuel [
 
 	fuel := fuel + anAmountOfFuel
@@ -45,14 +45,14 @@ FuelTank >> loadedWith [
 	^ fuel
 ]
 
-{ #category : #action }
+{ #category : #capacity }
 FuelTank >> reloadToCapacity [
 
 	fuel := capacity
 ]
 
-{ #category : #action }
+{ #category : #fuel }
 FuelTank >> useFuel: anAmountOfFuel [
 
-	fuel := fuel - anAmountOfFuel.
+	fuel := fuel - anAmountOfFuel
 ]

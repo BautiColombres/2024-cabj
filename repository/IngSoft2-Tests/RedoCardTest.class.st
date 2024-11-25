@@ -57,7 +57,7 @@ RedoCardTest >> test01TwoRedoCardsPlayedAfterAccelerationThenSpaceshipMovesThree
 	aGame spaceshipId: 2 useInstantCard: RedoCard toDoEffectFor: nil.
 	aGame spaceshipId: 1 useInstantCard: RedoCard toDoEffectFor: 2.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 11.
 	result at: 2 put: 1.
@@ -78,9 +78,9 @@ RedoCardTest >> test02RedoCardPlayedAfterOverloadThenSpaceshipsAffectedHaveLessM
 
 	aGame usePermanentCard: OverloadCard toDoEffectFor: 2.
 	aGame spaceshipId: 1 useInstantCard: RedoCard toDoEffectFor: 3.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
@@ -103,14 +103,14 @@ RedoCardTest >> test03RedoCardPlayedAfterAllyThenSpaceshipsThreeAndFourShareFuel
 
 	aGame usePermanentCard: AllyCard toDoEffectFor: 2.
 	aGame spaceshipId: 3 useInstantCard: RedoCard toDoEffectFor: 4.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 1.
@@ -144,7 +144,7 @@ RedoCardTest >> test04TwoAccelerationCardsPlayThenACancellationAndARedoSoNoAccel
 		useInstantCard: RedoCard
 		toDoEffectFor: AccelerationCard new.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 8.
 	result at: 2 put: 1.
@@ -156,7 +156,7 @@ RedoCardTest >> test04TwoAccelerationCardsPlayThenACancellationAndARedoSoNoAccel
 RedoCardTest >> test05RedoCardPlayedAfterRepeatCardThenCellEffectRepeatsTwice [
 
 	| aGame result |
-	aLoadedDie := LoadedDie of: #( 9 5 10).
+	aLoadedDie := LoadedDie of: #( 9 5 10 ).
 
 	aWormholeCreator := WormholeCreator withBeginning: 2 andEnd: 3.
 	collectionOfCells := OrderedCollection new.
@@ -175,8 +175,8 @@ RedoCardTest >> test05RedoCardPlayedAfterRepeatCardThenCellEffectRepeatsTwice [
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 	aGame spaceshipId: 2 useInstantCard: RepeatCard toDoEffectFor: 1.
 	aGame spaceshipId: 2 useInstantCard: RedoCard toDoEffectFor: 1.
 
@@ -199,10 +199,10 @@ RedoCardTest >> test06RedoAReverseCardThenTurnOrderStaysNormal [
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 1 useInstantCard: ReverseCard toDoEffectFor: nil.
 	aGame spaceshipId: 2 useInstantCard: RedoCard toDoEffectFor: nil.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
@@ -225,10 +225,10 @@ RedoCardTest >> test07RedoASkipCardThenTwoTurnsAreSkipped [
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 3 useInstantCard: SkipCard toDoEffectFor: nil.
 	aGame spaceshipId: 1 useInstantCard: RedoCard toDoEffectFor: nil.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 15.
@@ -252,10 +252,10 @@ RedoCardTest >> test08RedoADoubleCardThenSpaceshipOnePlaysThreeTimesInARow [
 		         andGameDeck: gameDeck.
 
 	aGame spaceshipId: 1 useInstantCard: DoubleCard toDoEffectFor: nil.
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 1 useInstantCard: RedoCard toDoEffectFor: nil.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 22.
@@ -288,12 +288,12 @@ RedoCardTest >> test09RedoAFreedomCardThenSpaceshipTwoGetsToMove [
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 1 useInstantCard: FreedomCard toDoEffectFor: 1.
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 2 useInstantCard: RedoCard toDoEffectFor: 2.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 12.

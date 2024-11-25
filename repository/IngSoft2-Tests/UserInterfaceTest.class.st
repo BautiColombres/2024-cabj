@@ -64,7 +64,7 @@ UserInterfaceTest >> setUp [
 		            #( 10 10 10 10 10 10 10 10 10 10 )
 ]
 
-{ #category : #tests }
+{ #category : #results }
 UserInterfaceTest >> test01UserInterfaceMovesSpaceshipThenGetsFinalPositions [
 
 	| result aUserInterface |
@@ -76,9 +76,9 @@ UserInterfaceTest >> test01UserInterfaceMovesSpaceshipThenGetsFinalPositions [
 		                  playWith: aLoadedDie
 		                  andGameDeck: gameDeck.
 
-	aUserInterface moveSpaceship.
-	aUserInterface moveSpaceship.
-	aUserInterface moveSpaceship.
+	aUserInterface playTurn.
+	aUserInterface playTurn.
+	aUserInterface playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 1.
@@ -88,7 +88,7 @@ UserInterfaceTest >> test01UserInterfaceMovesSpaceshipThenGetsFinalPositions [
 	self assert: aUserInterface finalPositionOfSpaceships equals: result
 ]
 
-{ #category : #tests }
+{ #category : #card }
 UserInterfaceTest >> test02UserInterfaceUsesBothPermanentAndInstantCardsThenGamePlaysNormally [
 
 	| aUserInterFace result |
@@ -122,9 +122,9 @@ UserInterfaceTest >> test02UserInterfaceUsesBothPermanentAndInstantCardsThenGame
 		spaceshipId: 1
 		useInstantCard: RedoCard
 		toDoEffectFor: 3.
-	aUserInterFace moveSpaceship.
-	aUserInterFace moveSpaceship.
-	aUserInterFace moveSpaceship.
+	aUserInterFace playTurn.
+	aUserInterFace playTurn.
+	aUserInterFace playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 10.
@@ -134,7 +134,7 @@ UserInterfaceTest >> test02UserInterfaceUsesBothPermanentAndInstantCardsThenGame
 	self assert: aUserInterFace finalPositionOfSpaceships equals: result
 ]
 
-{ #category : #tests }
+{ #category : #fuel }
 UserInterfaceTest >> test03UserInterfaceReloadFuelThenGameFunctionsNormally [
 
 	| aUserInterFace result |
@@ -146,15 +146,15 @@ UserInterfaceTest >> test03UserInterfaceReloadFuelThenGameFunctionsNormally [
 		                  playWith: aLoadedDie
 		                  andGameDeck: gameDeck.
 
-	aUserInterFace moveSpaceship.
-	aUserInterFace reloadSpaceship.
-	aUserInterFace moveSpaceship.
+	aUserInterFace playTurn.
+	aUserInterFace reloadSpaceshipAndLooseTurn.
+	aUserInterFace playTurn.
 	result := Dictionary new.
 	result at: 1 put: 7.
 	self assert: aUserInterFace finalPositionOfSpaceships equals: result
 ]
 
-{ #category : #tests }
+{ #category : #results }
 UserInterfaceTest >> test04UserInterfacesPlaysThenRankingOfSpaceshipsShowTheRanking [
 
 	| aUserInterFace rankingOfSpaceships idRanking |
@@ -176,10 +176,10 @@ UserInterfaceTest >> test04UserInterfacesPlaysThenRankingOfSpaceshipsShowTheRank
 		                  andGameDeck: gameDeck.
 
 	rankingOfSpaceships := OrderedCollection with: 2 with: 1 with: 3.
-	aUserInterFace moveSpaceship.
-	aUserInterFace moveSpaceship.
-	aUserInterFace moveSpaceship.
-	aUserInterFace moveSpaceship.
+	aUserInterFace playTurn.
+	aUserInterFace playTurn.
+	aUserInterFace playTurn.
+	aUserInterFace playTurn.
 
 	idRanking := aUserInterFace rankingOfSpaceships collect: [ :spaceship |
 		             spaceship id ].
@@ -187,7 +187,7 @@ UserInterfaceTest >> test04UserInterfacesPlaysThenRankingOfSpaceshipsShowTheRank
 	self assert: idRanking equals: rankingOfSpaceships
 ]
 
-{ #category : #tests }
+{ #category : #results }
 UserInterfaceTest >> test05UserInterfacePlaysThenGetsWinnerId [
 
 	| aUserInterFace |
@@ -196,12 +196,12 @@ UserInterfaceTest >> test05UserInterfacePlaysThenGetsWinnerId [
 		                  with: aBoardCreator
 		                  playWith: aLoadedDie
 		                  andGameDeck: gameDeck.
-	aUserInterFace moveSpaceship.
+	aUserInterFace playTurn.
 
 	self assert: aUserInterFace winner equals: 1
 ]
 
-{ #category : #tests }
+{ #category : #results }
 UserInterfaceTest >> test06UserInterfacePlaysThenGetsFinalLapsOfSpaceships [
 
 	| aUserInterFace resultOfLaps |
@@ -225,16 +225,16 @@ UserInterfaceTest >> test06UserInterfacePlaysThenGetsFinalLapsOfSpaceships [
 	resultOfLaps := Dictionary new.
 	resultOfLaps at: 1 put: 2.
 	resultOfLaps at: 2 put: 1.
-	aUserInterFace moveSpaceship.
-	aUserInterFace moveSpaceship.
-	aUserInterFace moveSpaceship.
+	aUserInterFace playTurn.
+	aUserInterFace playTurn.
+	aUserInterFace playTurn.
 
 	self
 		assert: aUserInterFace finalLapsOfSpaceships
 		equals: resultOfLaps
 ]
 
-{ #category : #tests }
+{ #category : #results }
 UserInterfaceTest >> test07userInterfacePlaysThenGetsFinalResultsOfSpaceships [
 
 	| aUserInterFace resultOfGame |
@@ -258,9 +258,9 @@ UserInterfaceTest >> test07userInterfacePlaysThenGetsFinalResultsOfSpaceships [
 	resultOfGame := Dictionary new.
 	resultOfGame at: 1 put: (Position startGameWithCell: 10 andLap: 2).
 	resultOfGame at: 2 put: (Position startGameWithCell: 6 andLap: 1).
-	aUserInterFace moveSpaceship.
-	aUserInterFace moveSpaceship.
-	aUserInterFace moveSpaceship.
+	aUserInterFace playTurn.
+	aUserInterFace playTurn.
+	aUserInterFace playTurn.
 
 	self
 		assert: aUserInterFace finalResultsOfSpaceships

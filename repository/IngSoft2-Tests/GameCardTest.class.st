@@ -63,7 +63,7 @@ GameCardTest >> test03WhenOneAccelerationCardIsActiveThenSpaceshipMovesOneMoreTh
 
 	aGame usePermanentCard: AccelerationCard toDoEffectFor: nil.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 8.
 
@@ -82,9 +82,9 @@ GameCardTest >> test05SpaceshipOnePlaysOverloadToSpaceshipTwoThenTwoMovesLessTwo
 		         andGameDeck: gameDeck.
 
 	aGame usePermanentCard: OverloadCard toDoEffectFor: 2.
-	aGame moveSpaceship.
+	aGame playTurn.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 7.
 	result at: 2 put: 5.
@@ -105,11 +105,11 @@ GameCardTest >> test06GameActivatesAllyCardThenSpaceshipOneCanUseFuelFromSpacesh
 		         andGameDeck: gameDeck.
 
 	aGame usePermanentCard: AllyCard toDoEffectFor: 2.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 22.
@@ -131,10 +131,10 @@ GameCardTest >> test07BothAllysRunOutOfFuelThenBothLooseTwoTurns [
 		         andGameDeck: gameDeck.
 
 	aGame usePermanentCard: AllyCard toDoEffectFor: 2.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 1.
@@ -156,16 +156,15 @@ GameCardTest >> test10SpaceshipThreeRemovesOverloadCardThenItMovesWithoutEffect 
 		         andGameDeck: gameDeck.
 
 	aGame usePermanentCard: OverloadCard toDoEffectFor: 2.
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame usePermanentCard: OverloadCard toDoEffectFor: 3.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	aGame
 		spaceshipId: 2
-		useInstantCard:
-		CancellationCard
+		useInstantCard: CancellationCard
 		toDoEffectFor: (OverloadCard toDoEffectFor: 3).
-	aGame moveSpaceship.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 8.
 	result at: 2 put: 6.
@@ -187,13 +186,13 @@ GameCardTest >> test11CancelAllyCardThenBothSpaceshipsUseOnlyTheirFuelTank [
 		         andGameDeck: gameDeck.
 
 	aGame usePermanentCard: AllyCard toDoEffectFor: 2.
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame
 		spaceshipId: 2
 		useInstantCard: CancellationCard
 		toDoEffectFor: (AllyCard toDoEffectFor: 2).
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 1.
 	result at: 2 put: 3.
@@ -217,8 +216,8 @@ GameCardTest >> test12InstancCardPlayedOnAnoterSpaceshipsTurnThenInstantCardCanD
 		spaceshipId: 2
 		useInstantCard: CancellationCard
 		toDoEffectFor: (OverloadCard toDoEffectFor: 2).
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 8.
 	result at: 2 put: 8.
@@ -242,11 +241,10 @@ GameCardTest >> test13AccelerationCardPlayedAndCancelledThenSpaceshipMovesWithou
 	aGame usePermanentCard: AccelerationCard toDoEffectFor: nil.
 	aGame
 		spaceshipId: 2
-		useInstantCard:
-		CancellationCard
+		useInstantCard: CancellationCard
 		toDoEffectFor: AccelerationCard new.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 8.
 	result at: 2 put: 8.
@@ -269,11 +267,11 @@ GameCardTest >> test27WhenACardThatIsNotInHandTriesToActivateThenDoesNotDoTheEff
 		spaceshipId: 1
 		useInstantCard: CancellationCard
 		toDoEffectFor: AccelerationCard new.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 	aGame usePermanentCard: AccelerationCard toDoEffectFor: nil.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 16.
@@ -296,18 +294,18 @@ GameCardTest >> test28CancellationCardCancelsOnlyTheCardThatIsExactlyTheSameAsTh
 		         andGameDeck: gameDeck.
 
 	aGame usePermanentCard: OverloadCard toDoEffectFor: 2.
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame usePermanentCard: OverloadCard toDoEffectFor: 3.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame
 		spaceshipId: 2
 		useInstantCard: CancellationCard
 		toDoEffectFor: (OverloadCard toDoEffectFor: 2).
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 	result := Dictionary new.
 	result at: 1 put: 15.
 	result at: 2 put: 13.
@@ -330,8 +328,8 @@ GameCardTest >> test31SpaceshipThreeTriesToAllyWithTwoThenItThrowAnErrorBecauseT
 				         andGameDeck: gameDeck.
 
 			aGame usePermanentCard: AllyCard toDoEffectFor: 2.
-			aGame moveSpaceship.
-			aGame moveSpaceship.
+			aGame playTurn.
+			aGame playTurn.
 			aGame usePermanentCard: AllyCard toDoEffectFor: 2 ]
 		raise: Error
 		withMessage: 'Spaceship 2 already has an ally.'
@@ -350,12 +348,12 @@ GameCardTest >> test32SpaceshipsTwoChangesCapacityAndOneAnTwoAreAllysThenAmountO
 		         andGameDeck: gameDeck.
 
 	aGame usePermanentCard: AllyCard toDoEffectFor: 2.
-	aGame moveSpaceship. "1 -> 7"
-	aGame moveSpaceship. "2 -> 8"
-	aGame moveSpaceship. "1 -> 13"
-	aGame reloadSpaceship.
-	aGame moveSpaceship. "1 -> 27"
-	aGame moveSpaceship. "2 -> 10"
+	aGame playTurn. "1 -> 7"
+	aGame playTurn. "2 -> 8"
+	aGame playTurn. "1 -> 13"
+	aGame reloadSpaceshipAndLooseTurn.
+	aGame playTurn. "1 -> 27"
+	aGame playTurn. "2 -> 10"
 
 	resultOne := Dictionary new.
 	resultOne at: 1 put: 1.
@@ -386,7 +384,7 @@ GameCardTest >> test33GamePlaysWithDeckWithProbabilisticDistributionThenSpaceshi
 	aGame usePermanentCard: AccelerationCard toDoEffectFor: nil.
 	aGame usePermanentCard: AccelerationCard toDoEffectFor: nil.
 	aGame usePermanentCard: AccelerationCard toDoEffectFor: nil.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 7.
@@ -406,9 +404,9 @@ GameCardTest >> test34SpaceshipOneMovesAndPlaysReverseThenThreeMovesInsteadOfTwo
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 1 useInstantCard: ReverseCard toDoEffectFor: nil.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
@@ -421,6 +419,7 @@ GameCardTest >> test34SpaceshipOneMovesAndPlaysReverseThenThreeMovesInsteadOfTwo
 
 { #category : #reverse }
 GameCardTest >> test35TwoReverseCardsPlayedThenTurnOrderStaysTheSame [
+
 	| result aGame |
 	aLoadedDie := LoadedDie of: #( 7 7 ).
 
@@ -430,10 +429,10 @@ GameCardTest >> test35TwoReverseCardsPlayedThenTurnOrderStaysTheSame [
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 1 useInstantCard: ReverseCard toDoEffectFor: nil.
 	aGame spaceshipId: 2 useInstantCard: ReverseCard toDoEffectFor: nil.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
@@ -456,10 +455,10 @@ GameCardTest >> test36SkipCardPlayedThenSpaceshipThreeDoesntGetItsTurn [
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 	aGame spaceshipId: 1 useInstantCard: SkipCard toDoEffectFor: nil.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
@@ -483,12 +482,12 @@ GameCardTest >> test37SpaceshipsOneAndThreeUseDoubleCardThenGetToPlayTwiceInARow
 		         andGameDeck: gameDeck.
 
 	aGame spaceshipId: 1 useInstantCard: DoubleCard toDoEffectFor: nil.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 	aGame spaceshipId: 3 useInstantCard: DoubleCard toDoEffectFor: nil.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 15.
@@ -519,11 +518,11 @@ GameCardTest >> test38SpaceshipTwoPlaysFreedomCardThenGetsOutOfJail [
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 	aGame spaceshipId: 2 useInstantCard: FreedomCard toDoEffectFor: 2.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 15.

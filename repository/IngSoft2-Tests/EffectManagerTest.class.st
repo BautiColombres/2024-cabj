@@ -14,7 +14,7 @@ EffectManagerTest >> should: anErrorBlock raise: anErrorClass withMessage: anErr
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #tests }
+{ #category : #creation }
 EffectManagerTest >> test02EffectManagerCreatesCollectionOfEffectsSizeTwoThenCollectionSizeEqualsTwo [
 
 	| aEffectManager array collection |
@@ -28,7 +28,7 @@ EffectManagerTest >> test02EffectManagerCreatesCollectionOfEffectsSizeTwoThenCol
 	self assert: collection size equals: 2
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 EffectManagerTest >> test03EffectManagerManagesOnlyOneObjectThenCollectionCreatedOnlyHasThatObject [
 
 	| aEffectManager array collection |
@@ -50,8 +50,8 @@ EffectManagerTest >> test04EffectManagerThrowsErrorWhenSumOfProbabilitiesIsGreat
 	self
 		should: [
 			aEffectManager := EffectManager
-		                  manage: array
-		                  withProbabilitiesDistribution: #( 80 30 ). ]
+				                  manage: array
+				                  withProbabilitiesDistribution: #( 80 30 ) ]
 		raise: Error
 		withMessage: 'Sum of probabilities must be equal to one hundred'
 ]
@@ -60,17 +60,21 @@ EffectManagerTest >> test04EffectManagerThrowsErrorWhenSumOfProbabilitiesIsGreat
 EffectManagerTest >> test05EffectManagerThrowsErrorWhenSizesOfCollectionsRecivedDoNotMatch [
 
 	| array aEffectManager |
-	array := OrderedCollection with: Cell with: BlackHoleCell with: AtomicBombCell.
+	array := OrderedCollection
+		         with: Cell
+		         with: BlackHoleCell
+		         with: AtomicBombCell.
 	self
 		should: [
 			aEffectManager := EffectManager
-		                  manage: array
-		                  withProbabilitiesDistribution: #( 80 20 ). ]
+				                  manage: array
+				                  withProbabilitiesDistribution: #( 80 20 ) ]
 		raise: Error
-		withMessage: 'Size of objects to manage must be equal to size of distribution probabilities'
+		withMessage:
+		'Size of objects to manage must be equal to size of distribution probabilities'
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 EffectManagerTest >> test06EffectManagerManagesTwoObjectsThenGiveOneObjectGivesOneOrTheOther [
 
 	| aEffectManager array object |

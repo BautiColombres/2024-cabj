@@ -16,7 +16,7 @@ CollectionOfSpaceships class >> numberOfSpaceships: anAmountOfSpaceships withAmo
 		  withAmountOfFuel: anAmountOfFuel
 ]
 
-{ #category : #accessing }
+{ #category : #position }
 CollectionOfSpaceships >> cellsOfSpaceships [
 
 	| dictionaryOfCellPositions |
@@ -29,7 +29,7 @@ CollectionOfSpaceships >> cellsOfSpaceships [
 	^ dictionaryOfCellPositions
 ]
 
-{ #category : #enumerating }
+{ #category : #collection }
 CollectionOfSpaceships >> collect: aBlock [
 
 	^ spaceships collect: aBlock
@@ -55,16 +55,14 @@ CollectionOfSpaceships >> detectSpaceshipWithId: aSpaceshipId [
 { #category : #collection }
 CollectionOfSpaceships >> each: aBlock [
 
-	spaceships do: [ :spaceship |
-			aBlock value: spaceship ]
+	spaceships do: [ :spaceship | aBlock value: spaceship ]
 ]
 
 { #category : #collection }
 CollectionOfSpaceships >> each: aBlock but: aSpaceshipToSkip [
 
 	spaceships do: [ :spaceship |
-		aSpaceshipToSkip = spaceship ifFalse: [
-			aBlock value: spaceship ] ]
+		aSpaceshipToSkip = spaceship ifFalse: [ aBlock value: spaceship ] ]
 ]
 
 { #category : #initialization }
@@ -74,7 +72,7 @@ CollectionOfSpaceships >> initializeNumberOfSpaceships: anAmountOfSpaceships wit
 	self collectSpaceships: anAmountOfSpaceships
 ]
 
-{ #category : #accessing }
+{ #category : #position }
 CollectionOfSpaceships >> lapsOfSpaceships [
 
 	| dictionaryOfCellPositions |
@@ -87,20 +85,18 @@ CollectionOfSpaceships >> lapsOfSpaceships [
 	^ dictionaryOfCellPositions
 ]
 
-{ #category : #accessing }
+{ #category : #position }
 CollectionOfSpaceships >> positionsOfSpaceships [
 
 	| dictionaryOfCellPositions |
 	dictionaryOfCellPositions := Dictionary new.
 	self each: [ :spaceship |
-		dictionaryOfCellPositions
-			at: spaceship id
-			put: spaceship position ].
+		dictionaryOfCellPositions at: spaceship id put: spaceship position ].
 
 	^ dictionaryOfCellPositions
 ]
 
-{ #category : #accessing }
+{ #category : #position }
 CollectionOfSpaceships >> ranking [
 
 	| sortedSpaceships |

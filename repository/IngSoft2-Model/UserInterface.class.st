@@ -48,10 +48,10 @@ UserInterface >> initializeNumberOfSpaceships: anAmount with: aBoardCreator play
 	spaceships := aGame spaceships
 ]
 
-{ #category : #action }
-UserInterface >> moveSpaceship [
+{ #category : #spaceship }
+UserInterface >> playTurn [
 
-	^aGame moveSpaceship
+	^ aGame playTurn
 ]
 
 { #category : #results }
@@ -64,19 +64,19 @@ UserInterface >> rankingOfSpaceships [
 	^ sortedSpaceships first: numberOfSpaceshipsToTake
 ]
 
-{ #category : #action }
-UserInterface >> reloadSpaceship [
+{ #category : #spaceship }
+UserInterface >> reloadSpaceshipAndLooseTurn [
 
-	aGame reloadSpaceship
+	aGame reloadSpaceshipAndLooseTurn
 ]
 
-{ #category : #activation }
+{ #category : #card }
 UserInterface >> spaceshipId: anId useInstantCard: aCard toDoEffectFor: anObject [
 
 	aGame spaceshipId: anId useInstantCard: aCard toDoEffectFor: anObject
 ]
 
-{ #category : #activation }
+{ #category : #card }
 UserInterface >> usePermanentCard: aCard toDoEffectFor: anId [
 
 	aGame usePermanentCard: aCard toDoEffectFor: anId

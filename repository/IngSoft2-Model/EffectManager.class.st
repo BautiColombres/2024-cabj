@@ -2,8 +2,6 @@ Class {
 	#name : #EffectManager,
 	#superclass : #Object,
 	#instVars : [
-		'probabilities',
-		'objects',
 		'probabilisticDistributionOfObjects'
 	],
 	#category : #'IngSoft2-Model'
@@ -26,11 +24,12 @@ EffectManager >> createCollectionSize: aNumber [
 	| collectionOfObjects |
 	collectionOfObjects := OrderedCollection new.
 	aNumber timesRepeat: [
-		collectionOfObjects add: (probabilisticDistributionOfObjects at: 100 atRandom) ].
+		collectionOfObjects add:
+			(probabilisticDistributionOfObjects at: 100 atRandom) ].
 	^ collectionOfObjects
 ]
 
-{ #category : #creating }
+{ #category : #'set and get' }
 EffectManager >> giveOneObject [
 
 	| objectToGive |
@@ -44,7 +43,6 @@ EffectManager >> initializeManage: aCollectionOfObjects withProbabilitiesDistrib
 	| totalCount |
 	probabilisticDistributionOfObjects := OrderedCollection new.
 	totalCount := 0.
-	probabilities := collectionOfProbabilities.
 
 	aCollectionOfObjects
 		with: collectionOfProbabilities
@@ -53,7 +51,7 @@ EffectManager >> initializeManage: aCollectionOfObjects withProbabilitiesDistrib
 			remaining := 100 - totalCount.
 
 			count timesRepeat: [
-				probabilisticDistributionOfObjects add: object].
+				probabilisticDistributionOfObjects add: object ].
 
 			totalCount := totalCount + count ]
 ]

@@ -4,7 +4,7 @@ Class {
 	#category : #'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : #initialization }
 PositionTest >> test01PositioninitializeThenCellEqualsOne [
 
 	| aPosition |
@@ -13,7 +13,7 @@ PositionTest >> test01PositioninitializeThenCellEqualsOne [
 	self assert: aPosition cell equals: 1
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 PositionTest >> test02PositioninitializeThenLapEqualsOne [
 
 	| aPosition |
@@ -22,7 +22,7 @@ PositionTest >> test02PositioninitializeThenLapEqualsOne [
 	self assert: aPosition lap equals: 1
 ]
 
-{ #category : #tests }
+{ #category : #'set and get' }
 PositionTest >> test03PositioninitializeSetCellTwoThenCellEqualsTwo [
 
 	| aPosition |
@@ -32,7 +32,7 @@ PositionTest >> test03PositioninitializeSetCellTwoThenCellEqualsTwo [
 	self assert: aPosition cell equals: 2
 ]
 
-{ #category : #tests }
+{ #category : #'set and get' }
 PositionTest >> test04PositioninitializeSetLapTwoThenLapEqualsTwo [
 
 	| aPosition |
@@ -42,31 +42,33 @@ PositionTest >> test04PositioninitializeSetLapTwoThenLapEqualsTwo [
 	self assert: aPosition lap equals: 2
 ]
 
-{ #category : #tests }
+{ #category : #position }
 PositionTest >> test05PositionEqualsAnotherPosition [
 
-	| aPosition position |
+	| aPosition position equals |
 	aPosition := Position startGame.
 	position := Position startGameWithCell: 1 andLap: 1.
+	equals := aPosition = position.
 
-	self assert: aPosition = position
+	self assert: equals
 ]
 
-{ #category : #tests }
+{ #category : #position }
 PositionTest >> test06PositionIsNotEqualToAnotherPosition [
 
-	| aPosition position |
+	| aPosition position equals |
 	aPosition := Position startGame.
 	position := Position startGameWithCell: 2 andLap: 1.
+	equals := aPosition = position.
 
-	self deny: aPosition = position
+	self deny: equals
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 PositionTest >> test08PositionInitializeThenIsInLapOne [
 
 	| aPosition |
 	aPosition := Position startGame.
 
-	self assert: (aPosition lap) equals: 1
+	self assert: aPosition lap equals: 1
 ]

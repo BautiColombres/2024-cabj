@@ -4,7 +4,7 @@ Class {
 	#category : #'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : #initialization }
 FuelTankTest >> test01FuelTankInitializeWithAmountOfFuelThenIsLoadedWithTheSameAmount [
 
 	| aFuelTank |
@@ -13,17 +13,17 @@ FuelTankTest >> test01FuelTankInitializeWithAmountOfFuelThenIsLoadedWithTheSameA
 	self assert: aFuelTank loadedWith equals: 10
 ]
 
-{ #category : #tests }
+{ #category : #action }
 FuelTankTest >> test02FuelTankUseFuelThenLoadedWithFuelLessTheAmountUsed [
 
 	| aFuelTank |
 	aFuelTank := FuelTank fullWith: 10.
 	aFuelTank useFuel: 3.
-	
+
 	self assert: aFuelTank loadedWith equals: 7
 ]
 
-{ #category : #tests }
+{ #category : #action }
 FuelTankTest >> test03FuelTankUseFuelAndLoadsTheSameAmountThenIsLoadedWithAmountInitializedWith [
 
 	| aFuelTank |
@@ -34,20 +34,20 @@ FuelTankTest >> test03FuelTankUseFuelAndLoadsTheSameAmountThenIsLoadedWithAmount
 	self assert: aFuelTank loadedWith equals: 10
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 FuelTankTest >> test04FuelTankInitializeWithFuelThenIsNotEmpty [
 
 	| aFuelTank |
 	aFuelTank := FuelTank fullWith: 10.
-	
+
 	self deny: aFuelTank isEmpty
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 FuelTankTest >> test05FuelTankInitializedWithoutFuelThenIsEmpty [
 
 	| aFuelTank |
 	aFuelTank := FuelTank fullWith: 0.
-	
+
 	self assert: aFuelTank isEmpty
 ]

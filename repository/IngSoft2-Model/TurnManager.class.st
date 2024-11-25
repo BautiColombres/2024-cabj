@@ -15,8 +15,8 @@ TurnManager class >> manage: collectionOfSpaceships [
 	^(self new) initializeManage: collectionOfSpaceships .
 ]
 
-{ #category : #action }
-TurnManager >> decrementTurnsOfSpaceship [
+{ #category : #turns }
+TurnManager >> decrementLostTurnsOfSpaceship [
 
 	turnsToSkip
 		at: currentSpaceship id
@@ -36,14 +36,14 @@ TurnManager >> initializeManage: collectionOfSpaceships [
 		turnsToSkip at: spaceship id put: 0 ]
 ]
 
-{ #category : #action }
+{ #category : #turns }
 TurnManager >> lostTurns: anAmountOfTurns by: aSpaceshipId [
 
 	(turnsToSkip at: aSpaceshipId) = 0 ifTrue: [
 		turnsToSkip at: aSpaceshipId put: anAmountOfTurns ]
 ]
 
-{ #category : #auxiliar }
+{ #category : #collection }
 TurnManager >> nextSpaceship [
 
 	| currentIndex nextIndex |
@@ -53,29 +53,29 @@ TurnManager >> nextSpaceship [
 	currentSpaceship := spaceships at: nextIndex
 ]
 
-{ #category : #action }
+{ #category : #turns }
 TurnManager >> nextTurn [
 
 	previousSpaceship := currentSpaceship.
 	self nextSpaceship.
 	[ (turnsToSkip at: currentSpaceship id) > 0 ] whileTrue: [
-		self decrementTurnsOfSpaceship.
+		self decrementLostTurnsOfSpaceship.
 		self nextSpaceship ]
 ]
 
-{ #category : #action }
+{ #category : #turns }
 TurnManager >> previousTurn [
 
 	currentSpaceship := previousSpaceship
 ]
 
-{ #category : #reverseCard }
+{ #category : #reverse }
 TurnManager >> reverseTurnOrder [
 
 	spaceships := spaceships reversed
 ]
 
-{ #category : #accessing }
+{ #category : #'set and get' }
 TurnManager >> spaceshipPlaying [
 
 	^ currentSpaceship

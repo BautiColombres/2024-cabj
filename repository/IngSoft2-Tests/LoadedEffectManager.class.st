@@ -25,7 +25,6 @@ LoadedEffectManager >> createCollectionSize: aNumber [
 LoadedEffectManager >> giveOneObject [
 
 	^ objects at: 1
-
 ]
 
 { #category : #initialization }

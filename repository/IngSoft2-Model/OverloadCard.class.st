@@ -23,5 +23,5 @@ OverloadCard >> applyEffectOn: throwResult for: aSpaceshipId [
 { #category : #accessing }
 OverloadCard >> id [
 
-	^ spaceshipAffected 
+	^ spaceshipAffected
 ]

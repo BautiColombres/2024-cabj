@@ -20,33 +20,34 @@ Position class >> startGameWithCell: aNumber andLap: anotherNumber [
 	^ self new initializeStartGameWithCell: aNumber andLap: anotherNumber
 ]
 
-{ #category : #accessing }
+{ #category : #comparing }
 Position >> = aPosition [
 
 	^ self cell = aPosition cell and: self lap = aPosition lap
 ]
 
-{ #category : #checking }
+{ #category : #adjustment }
 Position >> adjustMovementFor: aNumberOfMovements withLimits: aFinishLine [
 
 	| aux cellXLapsOfFinishLine amountOfCells cellXLapsOfPosition |
 	aux := aNumberOfMovements.
 	amountOfCells := aFinishLine cell.
-	cellXLapsOfFinishLine := (aFinishLine cell) * (aFinishLine lap).
-	cellXLapsOfPosition := amountOfCells*(lap-1)+cell.
-	
-	cellXLapsOfPosition + aNumberOfMovements > cellXLapsOfFinishLine ifTrue: [
-		aux := cellXLapsOfFinishLine - cellXLapsOfPosition.
-		self updateLap: (aFinishLine lap) - lap ].
+	cellXLapsOfFinishLine := aFinishLine cell * aFinishLine lap.
+	cellXLapsOfPosition := amountOfCells * (lap - 1) + cell.
+
+	cellXLapsOfPosition + aNumberOfMovements > cellXLapsOfFinishLine
+		ifTrue: [
+			aux := cellXLapsOfFinishLine - cellXLapsOfPosition.
+			self updateLap: aFinishLine lap - lap ].
 
 	cellXLapsOfPosition + aNumberOfMovements < 1 ifTrue: [
 		aux := 1 - cellXLapsOfPosition.
 		self updateLap: 1 - lap ].
-	
+
 	^ aux
 ]
 
-{ #category : #checking }
+{ #category : #adjustment }
 Position >> adjustPositionWith: aFinishLine [
 
 	| amountOfCells completedLaps nextCell |
@@ -66,7 +67,7 @@ Position >> adjustPositionWith: aFinishLine [
 	^ self
 ]
 
-{ #category : #accessing }
+{ #category : #'set and get' }
 Position >> cell [
 
 	^ cell
@@ -79,7 +80,7 @@ Position >> initializeStartGameWithCell: aNumber andLap: anotherNumber [
 	lap := anotherNumber
 ]
 
-{ #category : #accessing }
+{ #category : #'set and get' }
 Position >> lap [
 
 	^ lap

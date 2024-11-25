@@ -21,9 +21,8 @@ Card >> = aCard [
 
 { #category : #effect }
 Card >> activateEffectOn: aGame forSpaceship: anId [
-	
-	aGame activateCard: self
 
+	aGame activateCard: self
 ]
 
 { #category : #effect }

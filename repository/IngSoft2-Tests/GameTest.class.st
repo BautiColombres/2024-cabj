@@ -72,7 +72,7 @@ GameTest >> testGameCreatedWithDieMovesSpaceshipInBetweenOneAndTheAmountOfFaces 
 		         with: aBoardCreator
 		         playWith: aDie
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	self assert:
 		((aGame spaceships cellsOfSpaceships values at: 1) between: 2 and: 6)
@@ -95,9 +95,9 @@ GameTest >> testSpaceshipOnesWinThenSpaceshipsTwoPlaysAndGameOver [
 		         with: aBoardCreator
 		         playWith: aCollectionOfDice
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
+	aGame playTurn.
 	self
-		should: [ aGame moveSpaceship ]
+		should: [ aGame playTurn ]
 		raise: Error
 		withMessage: 'The Game is Over'
 ]
@@ -119,9 +119,9 @@ GameTest >> testTwoSpaceshipsFirstOneMovesTwiceWithDieOfSixThenMinTwoMaxTwelvePo
 		         with: aBoardCreator
 		         playWith: aDie
 		         andGameDeck: gameDeck.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 	self assert:
 		((aGame spaceships cellsOfSpaceships values at: 1)
 			 between: 1

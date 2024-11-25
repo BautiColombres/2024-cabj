@@ -4,8 +4,8 @@ Class {
 	#category : #'IngSoft2-Model'
 }
 
-{ #category : #action }
-AtomicBombCell >> applyEffectTo: aSpaceship on:aGame [
+{ #category : #effect }
+AtomicBombCell >> applyEffectTo: aSpaceship on: aGame [
 
-	aGame resetSpaceshipsToCellOne.
+	aGame resetSpaceshipsToCellOne
 ]

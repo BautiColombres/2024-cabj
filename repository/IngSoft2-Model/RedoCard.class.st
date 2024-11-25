@@ -13,12 +13,12 @@ RedoCard class >> toDoEffectFor: anIdOrCard [
 	^ self new initializeToDoEffectFor: anIdOrCard
 ]
 
-{ #category : #accessing }
+{ #category : #effect }
 RedoCard >> activateEffectOn: aGame forSpaceship: anId [
 
 	| cardToRedo |
 	cardToRedo := aGame lastCardPlayed toDoEffectFor: idOrCardToRedo.
-	cardToRedo activateEffectOn: aGame forSpaceship: anId.
+	cardToRedo activateEffectOn: aGame forSpaceship: anId
 ]
 
 { #category : #initialization }

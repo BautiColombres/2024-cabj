@@ -63,7 +63,7 @@ RepeatCardTest >> test01SpaceshipOneEntersBlackHoleAndSpaceshipTwoRepeatsEffectT
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 2 useInstantCard: RepeatCard toDoEffectFor: 1.
 
 	result := Dictionary new.
@@ -85,7 +85,7 @@ RepeatCardTest >> test02ReapeatCardRepeatsACellThenNothingChanges [
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 2 useInstantCard: RepeatCard toDoEffectFor: 1.
 
 	result := Dictionary new.
@@ -116,7 +116,7 @@ RepeatCardTest >> test03RepeatCardRepeatsMoonWalkThenSpaceshipOneMovesBackwards 
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 2 useInstantCard: RepeatCard toDoEffectFor: 2.
 
 	result := Dictionary new.
@@ -148,7 +148,7 @@ RepeatCardTest >> test04RepeatCardRepeatsAtomicBombThenEverySpaceshipIsOnCellOne
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 2 useInstantCard: RepeatCard toDoEffectFor: 1.
 
 	result := Dictionary new.
@@ -189,7 +189,7 @@ RepeatCardTest >> test05RepeatCardRepeatsHyperJumpThenBothSpaceshipsMoveSamePars
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 1 useInstantCard: RepeatCard toDoEffectFor: 2.
 
 	result := Dictionary new.
@@ -225,13 +225,13 @@ RepeatCardTest >> test06RepeatCardRepeatsCardDispenserThenSpaceshipTwoCanPlayTwo
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 2 useInstantCard: RepeatCard toDoEffectFor: 2.
 	aGame usePermanentCard: AccelerationCard toDoEffectFor: nil.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 	aGame usePermanentCard: AccelerationCard toDoEffectFor: nil.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
@@ -252,8 +252,8 @@ RepeatCardTest >> test07RepeatCardRepeatsWormholeThenSpaceshipOneGoesToWormhole 
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 	aGame spaceshipId: 2 useInstantCard: RepeatCard toDoEffectFor: 1.
 
 	result := Dictionary new.
@@ -274,9 +274,9 @@ RepeatCardTest >> test08RepeatCardRepeatsHyperGravityThenSpaceshipMovesWithoutIm
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 1 useInstantCard: RepeatCard toDoEffectFor: 2.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
@@ -310,9 +310,9 @@ RepeatCardTest >> test09RepeatHyperGravityForSpaceshipTwoThenItCannotMoveBeacuse
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 1 useInstantCard: RepeatCard toDoEffectFor: 2.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
@@ -346,9 +346,9 @@ RepeatCardTest >> test10RepeatHyperGravityForSpaceshipTwoThenItCanMoveBeacuseOfT
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 1 useInstantCard: RepeatCard toDoEffectFor: 2.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
@@ -379,15 +379,47 @@ RepeatCardTest >> test11RepeateJailForSpaceshipTwoThenItOnlyMovesWithMaxDiceThro
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame spaceshipId: 1 useInstantCard: RepeatCard toDoEffectFor: 2.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
 	result at: 2 put: 11.
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]
+
+{ #category : #'hyper space jump' }
+RepeatCardTest >> test12RepeatHyperSpaceJumpThenSpaceshipTwoMovesFourCells [
+
+	| aGame result |
+	aLoadedDie := LoadedDie of: #( 7 ).
+
+	collectionOfCells := OrderedCollection new.
+	30 timesRepeat: [ collectionOfCells add: Cell new ].
+
+	collectionOfCells at: 8 put: HyperSpaceJumpCell new.
+
+	aBoardCreator := BoardCreator
+		                 with: collectionOfCells
+		                 ofLaps: 2
+		                 withWormholeCreator: aWormholeCreator.
+
+	aGame := Game
+		         numberOfSpaceships: 2
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+
+	aGame playTurn.
+	aGame spaceshipId: 2 useInstantCard: RepeatCard toDoEffectFor: 2.
+
+	result := Dictionary new.
+	result at: 1 put: 12.
+	result at: 2 put: 5.
 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]

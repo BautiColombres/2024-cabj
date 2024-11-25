@@ -14,10 +14,10 @@ SpaceshipCardHand class >> startGameWith: aGameDeck [
 	^ self new initializeStartGameWith: aGameDeck
 ]
 
-{ #category : #action }
+{ #category : #card }
 SpaceshipCardHand >> gainACard [
 
-	collectionOfCards add: (aGameDeck giveOneObject)
+	collectionOfCards add: aGameDeck giveOneObject
 ]
 
 { #category : #initialization }
@@ -27,7 +27,7 @@ SpaceshipCardHand >> initializeStartGameWith: gameDeck [
 	collectionOfCards := gameDeck createCollectionSize: 2
 ]
 
-{ #category : #action }
+{ #category : #card }
 SpaceshipCardHand >> use: aCard [
 
 	| cardToRemove |

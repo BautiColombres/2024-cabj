@@ -76,9 +76,9 @@ GameWithDefinedPositionsOfCellsTest >> test01GameMovesSpaceshipWhichEntersAtomic
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 1.
@@ -100,9 +100,9 @@ GameWithDefinedPositionsOfCellsTest >> test02GameMovesSpaceshipEntersHyperJumpTh
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 10.
@@ -124,9 +124,9 @@ GameWithDefinedPositionsOfCellsTest >> test03SpaceshipThreeEntersMoonWalkThenEve
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 6.
@@ -148,9 +148,9 @@ GameWithDefinedPositionsOfCellsTest >> test04GameMovesSpaceshipsOneEntersBlackHo
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 2.
@@ -172,9 +172,9 @@ GameWithDefinedPositionsOfCellsTest >> test05SpaceshipOneEntersHyperGravityAndRo
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
@@ -195,9 +195,9 @@ GameWithDefinedPositionsOfCellsTest >> test06SpaceshipEntersHyperGravityAndRolls
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 4.
@@ -218,9 +218,9 @@ GameWithDefinedPositionsOfCellsTest >> test07SecondSpaceshipAndThirdSpaceshipEnt
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 10.
@@ -254,10 +254,10 @@ GameWithDefinedPositionsOfCellsTest >> test08SpaceshipEntersCardDispenserThenItC
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 	aGame usePermanentCard: AccelerationCard toDoEffectFor: nil.
 	aGame usePermanentCard: AccelerationCard toDoEffectFor: nil.
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 9.
@@ -269,7 +269,6 @@ GameWithDefinedPositionsOfCellsTest >> test08SpaceshipEntersCardDispenserThenItC
 GameWithDefinedPositionsOfCellsTest >> test09SpaceshipFallsOnBlackHoleThenGoesBackOnlyTheAllowedMovements [
 
 	| result aGame |
-
 	aWormholeCreator := WormholeCreator withBeginning: 8 andEnd: 9.
 	collectionOfCells := OrderedCollection new.
 
@@ -299,7 +298,7 @@ GameWithDefinedPositionsOfCellsTest >> test09SpaceshipFallsOnBlackHoleThenGoesBa
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 1.
@@ -311,7 +310,6 @@ GameWithDefinedPositionsOfCellsTest >> test09SpaceshipFallsOnBlackHoleThenGoesBa
 GameWithDefinedPositionsOfCellsTest >> test10SpaceshipFallsOnBlackHoleThenGoesBackALap [
 
 	| result aGame |
-
 	aWormholeCreator := WormholeCreator withBeginning: 8 andEnd: 9.
 	collectionOfCells := OrderedCollection new.
 
@@ -341,8 +339,8 @@ GameWithDefinedPositionsOfCellsTest >> test10SpaceshipFallsOnBlackHoleThenGoesBa
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 8.
@@ -388,12 +386,45 @@ GameWithDefinedPositionsOfCellsTest >> test11SpaceshipGoesToJailThenOnlyMovesWhe
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
 
-	aGame moveSpaceship.
-	aGame moveSpaceship.
-	aGame moveSpaceship.
+	aGame playTurn.
+	aGame playTurn.
+	aGame playTurn.
 
 	result := Dictionary new.
 	result at: 1 put: 9.
+
+	self assert: aGame spaceships cellsOfSpaceships equals: result
+]
+
+{ #category : #'hyper space jump' }
+GameWithDefinedPositionsOfCellsTest >> test12SpaceshipEnterHyperSpaceJumpThenItMovesFourCellsWithoutUsingFuel [
+
+	| result aGame |
+	aWormholeCreator := WormholeCreator withBeginning: 2 andEnd: 3.
+	collectionOfCells := OrderedCollection new.
+
+	30 timesRepeat: [ collectionOfCells add: Cell new ].
+
+	collectionOfCells at: 8 put: HyperSpaceJumpCell new.
+
+	aBoardCreator := BoardCreator
+		                 with: collectionOfCells
+		                 ofLaps: 2
+		                 withWormholeCreator: aWormholeCreator.
+
+	aLoadedDie := LoadedDie of: #( 7 6 10 ).
+
+	aGame := Game
+		         numberOfSpaceships: 1
+		         with: aBoardCreator
+		         playWith: aLoadedDie
+		         andGameDeck: gameDeck.
+
+	aGame playTurn.
+	aGame playTurn.
+
+	result := Dictionary new.
+	result at: 1 put: 18.
 
 	self assert: aGame spaceships cellsOfSpaceships equals: result
 ]

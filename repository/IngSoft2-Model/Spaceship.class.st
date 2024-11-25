@@ -29,7 +29,7 @@ Spaceship >> > aSpaceship [
 
 	| completedLaps aSpaceshipCompletedLaps cellPosition aSpaceshipCellPosition |
 	completedLaps := objectPosition lap - 1.
-	aSpaceshipCompletedLaps := aSpaceship position lap -1.
+	aSpaceshipCompletedLaps := aSpaceship position lap - 1.
 	cellPosition := objectPosition cell.
 	aSpaceshipCellPosition := aSpaceship position cell.
 
@@ -41,19 +41,19 @@ Spaceship >> > aSpaceship [
 				  ifFalse: [ false ] ]
 ]
 
-{ #category : #'set and get' }
+{ #category : #fuel }
 Spaceship >> amountOfFuel [
 
 	^ aFuelTank loadedWith
 ]
 
-{ #category : #action }
+{ #category : #capacity }
 Spaceship >> changeCapacity: aNumber [
 
 	aFuelTank changeCapacity: aNumber
 ]
 
-{ #category : #accessing }
+{ #category : #'set and get' }
 Spaceship >> id [
 
 	^ id
@@ -64,16 +64,16 @@ Spaceship >> initializeLaunch: counterId withFuel: anAmountOfFuel [
 
 	objectPosition := Position startGame.
 	aFuelTank := FuelTank fullWith: anAmountOfFuel.
-	id := counterId.
+	id := counterId
 ]
 
-{ #category : #setter }
+{ #category : #fuel }
 Spaceship >> loadFuel [
 
 	aFuelTank reloadToCapacity
 ]
 
-{ #category : #action }
+{ #category : #movement }
 Spaceship >> move: aNumberOfMovements [
 
 	| aux |
@@ -86,7 +86,7 @@ Spaceship >> move: aNumberOfMovements [
 	aFuelTank useFuel: aux abs
 ]
 
-{ #category : #'set and get' }
+{ #category : #fuel }
 Spaceship >> objectFuelTank [
 
 	^ aFuelTank
@@ -98,7 +98,7 @@ Spaceship >> position [
 	^ objectPosition
 ]
 
-{ #category : #initialization }
+{ #category : #movement }
 Spaceship >> resetToOne [
 
 	| currentCell |

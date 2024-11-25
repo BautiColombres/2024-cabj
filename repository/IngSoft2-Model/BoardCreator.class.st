@@ -37,7 +37,7 @@ BoardCreator >> createBoard [
 	^ board
 ]
 
-{ #category : #'set and get' }
+{ #category : #creation }
 BoardCreator >> createWormhole [
 
 	board
@@ -51,7 +51,7 @@ BoardCreator >> initializeWith: collectionOfCells ofLaps: numberOfLaps withWormh
 
 	laps := numberOfLaps.
 	wormholeCreator := aWormholeCreator.
-	board := collectionOfCells.
+	board := collectionOfCells
 ]
 
 { #category : #'set and get' }

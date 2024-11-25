@@ -13,7 +13,7 @@ Parsecs class >> ofValue: aValue [
 	^ self new initializeOfValue: aValue
 ]
 
-{ #category : #converting }
+{ #category : #convertion }
 Parsecs >> convertToParsec [
 
 	^ value

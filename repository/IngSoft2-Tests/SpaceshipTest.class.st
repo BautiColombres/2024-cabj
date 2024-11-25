@@ -58,7 +58,7 @@ SpaceshipTest >> test006WhenSpaceshipMovesTwoTimesAndOneTimeThenPositionIsFour [
 ]
 
 { #category : #'tests - initialization' }
-SpaceshipTest >> test007WhenOneSpaceshipIsInitializeThenTheIdIsOne [ 
+SpaceshipTest >> test007WhenOneSpaceshipIsInitializeThenTheIdIsOne [
 
 	| aSpaceshipOne |
 	aSpaceshipOne := Spaceship launchWithFuel: 4.
@@ -67,7 +67,7 @@ SpaceshipTest >> test007WhenOneSpaceshipIsInitializeThenTheIdIsOne [
 ]
 
 { #category : #'tests - initialization' }
-SpaceshipTest >> test008WhenTwoSpaceshipsAreLaunchedThenSpaceshipTwoIdEqualsTwo [ 
+SpaceshipTest >> test008WhenTwoSpaceshipsAreLaunchedThenSpaceshipTwoIdEqualsTwo [
 
 	| aSpaceshipOne aSpaceshipTwo |
 	aSpaceshipOne := Spaceship launchWithFuel: 4.
@@ -87,7 +87,7 @@ SpaceshipTest >> test009WhenSpaceshipIsLaunchedThenStartsOnCellOneAndLapOne [
 ]
 
 { #category : #'tests - initialization' }
-SpaceshipTest >> test010WhenSpaceshipIsInitializeWithFuelThenAmountOfFuelStaysTheSame [ 
+SpaceshipTest >> test010WhenSpaceshipIsInitializeWithFuelThenAmountOfFuelStaysTheSame [
 
 	| aSpaceship |
 	aSpaceship := Spaceship launchWithFuel: 6.
@@ -166,7 +166,6 @@ SpaceshipTest >> test018SpaceshipMovesBackwardsThenPositionIsEqualToMovement [
 SpaceshipTest >> test019SpaceshipMoveBackwardsThenUsesFuel [
 
 	| aSpaceship |
-
 	aSpaceship := Spaceship launchWithFuel: 40.
 
 	aSpaceship move: 9.
