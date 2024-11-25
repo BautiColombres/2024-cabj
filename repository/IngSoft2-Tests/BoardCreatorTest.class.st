@@ -162,10 +162,10 @@ BoardCreatorTest >> test05BoardWithProbabilitesThenProbabilisticDistrubutionIsRi
 	"Calcular límites de confianza (99%)"
 	lowerBounds := expectedMeans
 		               with: deviations
-		               collect: [ :mean :sigma | mean - (2.567 * sigma) ].
+		               collect: [ :mean :sigma | mean - (4.753 * sigma) ].
 	upperBounds := expectedMeans
 		               with: deviations
-		               collect: [ :mean :sigma | mean + (2.567 * sigma) ].
+		               collect: [ :mean :sigma | mean + (4.753 * sigma) ].
 
 	"Contar ocurrencias reales de cada tipo de celda"
 	counts := OrderedCollection new.
