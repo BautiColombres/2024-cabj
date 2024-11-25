@@ -14,7 +14,7 @@ LoadedDieTest >> should: anErrorBlock raise: anErrorClass withMessage: anErrorMe
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 LoadedDieTest >> test001ALoadedDieIsCreatedWithAnAmountOfFaces [
 
 	| aLoadedDie |
@@ -31,7 +31,7 @@ LoadedDieTest >> test003ALoadedDieCannotHaveLessThanThreeFaces [
 		withMessage: 'A die less than three faces doesnt exist'
 ]
 
-{ #category : #'tests - initialization' }
+{ #category : #action }
 LoadedDieTest >> test004LoadedDieRecivesSequenceThrowsTwoTimesThenEqualsSecondNumber [
 
 	| aLoadedDie |
@@ -40,7 +40,7 @@ LoadedDieTest >> test004LoadedDieRecivesSequenceThrowsTwoTimesThenEqualsSecondNu
 	self assert: aLoadedDie throw equals: 4
 ]
 
-{ #category : #'tests - initialization' }
+{ #category : #action }
 LoadedDieTest >> test005WhenASequenceEndsThenThrowStartsItAgain [
 
 	| aLoadedDie |
@@ -49,7 +49,7 @@ LoadedDieTest >> test005WhenASequenceEndsThenThrowStartsItAgain [
 	self assert: aLoadedDie throw equals: 3
 ]
 
-{ #category : #'tests - initialization' }
+{ #category : #initialization }
 LoadedDieTest >> test006LoadedDieInitializeWithThreeThenAmountOfFacesEqualsThree [
 
 	| aLoadedDie |
@@ -58,7 +58,7 @@ LoadedDieTest >> test006LoadedDieInitializeWithThreeThenAmountOfFacesEqualsThree
 	self assert: aLoadedDie amountOfFaces equals: 3
 ]
 
-{ #category : #'tests - initialization' }
+{ #category : #initialization }
 LoadedDieTest >> test007LoadedDieInitializeWithSequenceThenAmountOfFacesMaxValueOfSequence [
 
 	| aLoadedDie |

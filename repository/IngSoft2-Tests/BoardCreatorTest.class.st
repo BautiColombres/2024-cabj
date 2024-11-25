@@ -13,7 +13,7 @@ Class {
 	#category : #'IngSoft2-Tests'
 }
 
-{ #category : #asserting }
+{ #category : #running }
 BoardCreatorTest >> setUp [
 
 	super setUp.
@@ -90,7 +90,7 @@ BoardCreatorTest >> test02BoardCreatorInitializeThenLapsReturnsAmountOfLaps [
 	self assert: aBoardCreator laps equals: 1
 ]
 
-{ #category : #tests }
+{ #category : #board }
 BoardCreatorTest >> test03BoardCreatorCreatesBoardWithCollectionOfCellsThenBoardHasThatCollectionPlusWhormHole [
 
 	collectionOfCells := OrderedCollection new.
@@ -141,14 +141,14 @@ BoardCreatorTest >> test04BoardCreatorRecivesCollectionOfNotCellsThenErrorIsThro
 		withMessage: 'A board creator must recive a collection of cells'
 ]
 
-{ #category : #'error testing' }
-BoardCreatorTest >> test05 [
+{ #category : #effect }
+BoardCreatorTest >> test05BoardWithProbabilitesThenProbabilisticDistrubutionIsRight [
 
 	| probabilities totalCells counts expectedMeans deviations lowerBounds upperBounds |
 	"Distribución de probabilidades (en tanto por ciento)"
 	probabilities := #( 2 20 10 20 8 5 1 10 24 ).
 
-	"Tamaño total de las celdas generadas"
+	"Tamaño total de las celdas generadas (dos menos por el wormhole)"
 	totalCells := 98.
 
 	"Calcular media (mu) y desviación estándar (sigma) para cada probabilidad"
@@ -159,7 +159,7 @@ BoardCreatorTest >> test05 [
 		              p := prob / 100.
 		              (totalCells * p * (1 - p)) sqrt ].
 
-	"Calcular límites de confianza (95%)"
+	"Calcular límites de confianza (99%)"
 	lowerBounds := expectedMeans
 		               with: deviations
 		               collect: [ :mean :sigma | mean - (2.567 * sigma) ].

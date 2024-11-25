@@ -4,7 +4,7 @@ Class {
 	#category : #'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : #initialization }
 PositionTest >> test01PositioninitializeThenCellEqualsOne [
 
 	| aPosition |
@@ -13,7 +13,7 @@ PositionTest >> test01PositioninitializeThenCellEqualsOne [
 	self assert: aPosition cell equals: 1
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 PositionTest >> test02PositioninitializeThenLapEqualsOne [
 
 	| aPosition |
@@ -22,7 +22,7 @@ PositionTest >> test02PositioninitializeThenLapEqualsOne [
 	self assert: aPosition lap equals: 1
 ]
 
-{ #category : #tests }
+{ #category : #'set and get' }
 PositionTest >> test03PositioninitializeSetCellTwoThenCellEqualsTwo [
 
 	| aPosition |
@@ -32,7 +32,7 @@ PositionTest >> test03PositioninitializeSetCellTwoThenCellEqualsTwo [
 	self assert: aPosition cell equals: 2
 ]
 
-{ #category : #tests }
+{ #category : #'set and get' }
 PositionTest >> test04PositioninitializeSetLapTwoThenLapEqualsTwo [
 
 	| aPosition |
@@ -42,7 +42,7 @@ PositionTest >> test04PositioninitializeSetLapTwoThenLapEqualsTwo [
 	self assert: aPosition lap equals: 2
 ]
 
-{ #category : #tests }
+{ #category : #position }
 PositionTest >> test05PositionEqualsAnotherPosition [
 
 	| aPosition position equals |
@@ -53,7 +53,7 @@ PositionTest >> test05PositionEqualsAnotherPosition [
 	self assert: equals
 ]
 
-{ #category : #tests }
+{ #category : #position }
 PositionTest >> test06PositionIsNotEqualToAnotherPosition [
 
 	| aPosition position equals |
@@ -64,7 +64,7 @@ PositionTest >> test06PositionIsNotEqualToAnotherPosition [
 	self deny: equals
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 PositionTest >> test08PositionInitializeThenIsInLapOne [
 
 	| aPosition |

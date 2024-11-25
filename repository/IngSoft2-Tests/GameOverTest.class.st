@@ -14,7 +14,7 @@ GameOverTest >> should: anErrorBlock raise: anErrorClass withMessage: anErrorMes
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #tests }
+{ #category : #'error testing' }
 GameOverTest >> testGameOverThrowIsInvalid [
 
 	self

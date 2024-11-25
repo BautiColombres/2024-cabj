@@ -4,7 +4,7 @@ Class {
 	#category : #'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : #effect }
 CardTest >> test01ActiveDeckActivateOverLoadCardThenApplyEffectApplysEffectOfIt [
 
 	| aActiveDeck |
@@ -16,7 +16,7 @@ CardTest >> test01ActiveDeckActivateOverLoadCardThenApplyEffectApplysEffectOfIt 
 		equals: 8
 ]
 
-{ #category : #tests }
+{ #category : #effect }
 CardTest >> test02ActiveDeckRemoveOverloadCardThenNoEffectOnThatId [
 
 	| aActiveDeck |

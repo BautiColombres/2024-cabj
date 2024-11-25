@@ -14,7 +14,7 @@ DieTest >> should: anErrorBlock raise: anErrorClass withMessage: anErrorMessage 
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 DieTest >> test001ADieIsCreatedWithAnAmountOfFaces [
 
 	| aDie |
@@ -31,7 +31,7 @@ DieTest >> test002ADieCannotBeCreatedWithLessThanThreeFaces [
 		withMessage: 'A die less than three faces doesnt exist'
 ]
 
-{ #category : #tests }
+{ #category : #action }
 DieTest >> test003ADieIsBetweenOneAndAnAmountOfFaces [
 
 	| aDie |
@@ -39,7 +39,7 @@ DieTest >> test003ADieIsBetweenOneAndAnAmountOfFaces [
 	self assert: (aDie throw between: 1 and: 5)
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 DieTest >> test004WhenInitializeWithFiveFacesThenAmountOfFacesEqualsFive [
 
 	| aDie |

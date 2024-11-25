@@ -4,7 +4,7 @@ Class {
 	#category : #'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : #action }
 LoadedDiceTest >> test001WhenCollectionOfTwoLoadedDiceThrowThenReturnsSumOfFaces [
 
 	| aCollectionOfLoadedDie dice |
@@ -15,7 +15,7 @@ LoadedDiceTest >> test001WhenCollectionOfTwoLoadedDiceThrowThenReturnsSumOfFaces
 	self assert: aCollectionOfLoadedDie throw equals: 6
 ]
 
-{ #category : #tests }
+{ #category : #action }
 LoadedDiceTest >> test002CollectionInitializeWithOneDieThrowThenReturnsDiesFaces [
 
 	| aCollectionOfLoadedDie dice |
@@ -24,7 +24,7 @@ LoadedDiceTest >> test002CollectionInitializeWithOneDieThrowThenReturnsDiesFaces
 	self assert: aCollectionOfLoadedDie throw equals: 3
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 LoadedDiceTest >> test003WhenCollectionInitializeWithTwoDiceOfThreeThenAmountOfFacesEqualsSix [
 
 	| aCollectionOfLoadedDie dice |

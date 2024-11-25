@@ -64,7 +64,7 @@ UserInterfaceTest >> setUp [
 		            #( 10 10 10 10 10 10 10 10 10 10 )
 ]
 
-{ #category : #tests }
+{ #category : #results }
 UserInterfaceTest >> test01UserInterfaceMovesSpaceshipThenGetsFinalPositions [
 
 	| result aUserInterface |
@@ -88,7 +88,7 @@ UserInterfaceTest >> test01UserInterfaceMovesSpaceshipThenGetsFinalPositions [
 	self assert: aUserInterface finalPositionOfSpaceships equals: result
 ]
 
-{ #category : #tests }
+{ #category : #card }
 UserInterfaceTest >> test02UserInterfaceUsesBothPermanentAndInstantCardsThenGamePlaysNormally [
 
 	| aUserInterFace result |
@@ -134,7 +134,7 @@ UserInterfaceTest >> test02UserInterfaceUsesBothPermanentAndInstantCardsThenGame
 	self assert: aUserInterFace finalPositionOfSpaceships equals: result
 ]
 
-{ #category : #tests }
+{ #category : #fuel }
 UserInterfaceTest >> test03UserInterfaceReloadFuelThenGameFunctionsNormally [
 
 	| aUserInterFace result |
@@ -154,7 +154,7 @@ UserInterfaceTest >> test03UserInterfaceReloadFuelThenGameFunctionsNormally [
 	self assert: aUserInterFace finalPositionOfSpaceships equals: result
 ]
 
-{ #category : #tests }
+{ #category : #results }
 UserInterfaceTest >> test04UserInterfacesPlaysThenRankingOfSpaceshipsShowTheRanking [
 
 	| aUserInterFace rankingOfSpaceships idRanking |
@@ -187,7 +187,7 @@ UserInterfaceTest >> test04UserInterfacesPlaysThenRankingOfSpaceshipsShowTheRank
 	self assert: idRanking equals: rankingOfSpaceships
 ]
 
-{ #category : #tests }
+{ #category : #results }
 UserInterfaceTest >> test05UserInterfacePlaysThenGetsWinnerId [
 
 	| aUserInterFace |
@@ -201,7 +201,7 @@ UserInterfaceTest >> test05UserInterfacePlaysThenGetsWinnerId [
 	self assert: aUserInterFace winner equals: 1
 ]
 
-{ #category : #tests }
+{ #category : #results }
 UserInterfaceTest >> test06UserInterfacePlaysThenGetsFinalLapsOfSpaceships [
 
 	| aUserInterFace resultOfLaps |
@@ -234,7 +234,7 @@ UserInterfaceTest >> test06UserInterfacePlaysThenGetsFinalLapsOfSpaceships [
 		equals: resultOfLaps
 ]
 
-{ #category : #tests }
+{ #category : #results }
 UserInterfaceTest >> test07userInterfacePlaysThenGetsFinalResultsOfSpaceships [
 
 	| aUserInterFace resultOfGame |

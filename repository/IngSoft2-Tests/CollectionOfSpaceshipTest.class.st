@@ -4,7 +4,7 @@ Class {
 	#category : #'IngSoft2-Tests'
 }
 
-{ #category : #tests }
+{ #category : #initialization }
 CollectionOfSpaceshipTest >> test01CollectionOfSpaceshipsInitializeThenCellsEqualsOne [
 
 	| aCollectionOfSpaceships result |
@@ -19,7 +19,7 @@ CollectionOfSpaceshipTest >> test01CollectionOfSpaceshipsInitializeThenCellsEqua
 	self assert: aCollectionOfSpaceships cellsOfSpaceships equals: result
 ]
 
-{ #category : #tests }
+{ #category : #results }
 CollectionOfSpaceshipTest >> test02LapsOfSpaceshipsThenReturnsDictionaryWithLapOfEachSpaceship [
 
 	| aCollectionOfSpaceships result |
@@ -34,7 +34,7 @@ CollectionOfSpaceshipTest >> test02LapsOfSpaceshipsThenReturnsDictionaryWithLapO
 	self assert: aCollectionOfSpaceships lapsOfSpaceships equals: result
 ]
 
-{ #category : #tests }
+{ #category : #results }
 CollectionOfSpaceshipTest >> test03PositionsOfSpaceshipsThenReturnEachPositionForEverySpaceship [
 
 	| aCollectionOfSpaceships result |

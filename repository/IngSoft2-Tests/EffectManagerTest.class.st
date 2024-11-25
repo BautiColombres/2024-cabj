@@ -14,7 +14,7 @@ EffectManagerTest >> should: anErrorBlock raise: anErrorClass withMessage: anErr
 		self assert: error messageText equals: anErrorMessage ]
 ]
 
-{ #category : #tests }
+{ #category : #creation }
 EffectManagerTest >> test02EffectManagerCreatesCollectionOfEffectsSizeTwoThenCollectionSizeEqualsTwo [
 
 	| aEffectManager array collection |
@@ -28,7 +28,7 @@ EffectManagerTest >> test02EffectManagerCreatesCollectionOfEffectsSizeTwoThenCol
 	self assert: collection size equals: 2
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 EffectManagerTest >> test03EffectManagerManagesOnlyOneObjectThenCollectionCreatedOnlyHasThatObject [
 
 	| aEffectManager array collection |
@@ -74,7 +74,7 @@ EffectManagerTest >> test05EffectManagerThrowsErrorWhenSizesOfCollectionsRecived
 		'Size of objects to manage must be equal to size of distribution probabilities'
 ]
 
-{ #category : #tests }
+{ #category : #initialization }
 EffectManagerTest >> test06EffectManagerManagesTwoObjectsThenGiveOneObjectGivesOneOrTheOther [
 
 	| aEffectManager array object |
