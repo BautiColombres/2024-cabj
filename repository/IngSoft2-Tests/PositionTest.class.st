@@ -45,21 +45,23 @@ PositionTest >> test04PositioninitializeSetLapTwoThenLapEqualsTwo [
 { #category : #tests }
 PositionTest >> test05PositionEqualsAnotherPosition [
 
-	| aPosition position |
+	| aPosition position equals |
 	aPosition := Position startGame.
 	position := Position startGameWithCell: 1 andLap: 1.
+	equals := aPosition = position.
 
-	self assert: aPosition = position
+	self assert: equals
 ]
 
 { #category : #tests }
 PositionTest >> test06PositionIsNotEqualToAnotherPosition [
 
-	| aPosition position |
+	| aPosition position equals |
 	aPosition := Position startGame.
 	position := Position startGameWithCell: 2 andLap: 1.
+	equals := aPosition = position.
 
-	self deny: aPosition = position
+	self deny: equals
 ]
 
 { #category : #tests }
@@ -68,5 +70,5 @@ PositionTest >> test08PositionInitializeThenIsInLapOne [
 	| aPosition |
 	aPosition := Position startGame.
 
-	self assert: (aPosition lap) equals: 1
+	self assert: aPosition lap equals: 1
 ]

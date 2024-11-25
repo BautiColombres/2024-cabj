@@ -269,7 +269,6 @@ GameWithDefinedPositionsOfCellsTest >> test08SpaceshipEntersCardDispenserThenItC
 GameWithDefinedPositionsOfCellsTest >> test09SpaceshipFallsOnBlackHoleThenGoesBackOnlyTheAllowedMovements [
 
 	| result aGame |
-
 	aWormholeCreator := WormholeCreator withBeginning: 8 andEnd: 9.
 	collectionOfCells := OrderedCollection new.
 
@@ -311,7 +310,6 @@ GameWithDefinedPositionsOfCellsTest >> test09SpaceshipFallsOnBlackHoleThenGoesBa
 GameWithDefinedPositionsOfCellsTest >> test10SpaceshipFallsOnBlackHoleThenGoesBackALap [
 
 	| result aGame |
-
 	aWormholeCreator := WormholeCreator withBeginning: 8 andEnd: 9.
 	collectionOfCells := OrderedCollection new.
 

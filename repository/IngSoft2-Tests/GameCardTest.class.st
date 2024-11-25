@@ -162,8 +162,7 @@ GameCardTest >> test10SpaceshipThreeRemovesOverloadCardThenItMovesWithoutEffect 
 
 	aGame
 		spaceshipId: 2
-		useInstantCard:
-		CancellationCard
+		useInstantCard: CancellationCard
 		toDoEffectFor: (OverloadCard toDoEffectFor: 3).
 	aGame playTurn.
 	result := Dictionary new.
@@ -242,8 +241,7 @@ GameCardTest >> test13AccelerationCardPlayedAndCancelledThenSpaceshipMovesWithou
 	aGame usePermanentCard: AccelerationCard toDoEffectFor: nil.
 	aGame
 		spaceshipId: 2
-		useInstantCard:
-		CancellationCard
+		useInstantCard: CancellationCard
 		toDoEffectFor: AccelerationCard new.
 	aGame playTurn.
 	aGame playTurn.
@@ -421,6 +419,7 @@ GameCardTest >> test34SpaceshipOneMovesAndPlaysReverseThenThreeMovesInsteadOfTwo
 
 { #category : #reverse }
 GameCardTest >> test35TwoReverseCardsPlayedThenTurnOrderStaysTheSame [
+
 	| result aGame |
 	aLoadedDie := LoadedDie of: #( 7 7 ).
 

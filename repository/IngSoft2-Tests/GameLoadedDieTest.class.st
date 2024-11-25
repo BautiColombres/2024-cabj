@@ -44,8 +44,13 @@ GameLoadedDieTest >> setUp [
 ]
 
 { #category : #asserting }
-GameLoadedDieTest >> should: anErrorBlock raise: anErrorClass withMessage: anErrorMessage [ 
-	self should: anErrorBlock raise: anErrorClass withExceptionDo: [ :error | self assert: error messageText equals: anErrorMessage ]
+GameLoadedDieTest >> should: anErrorBlock raise: anErrorClass withMessage: anErrorMessage [
+
+	self
+		should: anErrorBlock
+		raise: anErrorClass
+		withExceptionDo: [ :error |
+		self assert: error messageText equals: anErrorMessage ]
 ]
 
 { #category : #spaceship }
@@ -59,7 +64,7 @@ GameLoadedDieTest >> test01GameMovesSpaceshipTwiceWithLoadedDieSequenceSixAndFiv
 		         with: aBoardCreator
 		         playWith: aLoadedDie
 		         andGameDeck: gameDeck.
-		
+
 	aGame playTurn.
 	aGame playTurn.
 

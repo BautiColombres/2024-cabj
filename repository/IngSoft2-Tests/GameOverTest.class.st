@@ -5,12 +5,20 @@ Class {
 }
 
 { #category : #asserting }
-GameOverTest >> should: anErrorBlock raise: anErrorClass withMessage: anErrorMessage [ 
-	self should: anErrorBlock raise: anErrorClass withExceptionDo: [:error | self assert: error messageText equals: anErrorMessage ].
+GameOverTest >> should: anErrorBlock raise: anErrorClass withMessage: anErrorMessage [
+
+	self
+		should: anErrorBlock
+		raise: anErrorClass
+		withExceptionDo: [ :error |
+		self assert: error messageText equals: anErrorMessage ]
 ]
 
 { #category : #tests }
 GameOverTest >> testGameOverThrowIsInvalid [
 
-self should: [(GameOver new) throw] raise: Error withMessage:'The Game is Over'.
+	self
+		should: [ GameOver new throw ]
+		raise: Error
+		withMessage: 'The Game is Over'
 ]

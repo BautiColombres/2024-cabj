@@ -156,7 +156,7 @@ RedoCardTest >> test04TwoAccelerationCardsPlayThenACancellationAndARedoSoNoAccel
 RedoCardTest >> test05RedoCardPlayedAfterRepeatCardThenCellEffectRepeatsTwice [
 
 	| aGame result |
-	aLoadedDie := LoadedDie of: #( 9 5 10).
+	aLoadedDie := LoadedDie of: #( 9 5 10 ).
 
 	aWormholeCreator := WormholeCreator withBeginning: 2 andEnd: 3.
 	collectionOfCells := OrderedCollection new.

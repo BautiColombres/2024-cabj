@@ -18,7 +18,8 @@ LoadedDie class >> of: anAmountOfFaces [
 
 { #category : #'set and get' }
 LoadedDie >> amountOfFaces [
-	^faces max.
+
+	^ faces max
 ]
 
 { #category : #initialization }

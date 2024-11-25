@@ -19,7 +19,7 @@ FuelTankTest >> test02FuelTankUseFuelThenLoadedWithFuelLessTheAmountUsed [
 	| aFuelTank |
 	aFuelTank := FuelTank fullWith: 10.
 	aFuelTank useFuel: 3.
-	
+
 	self assert: aFuelTank loadedWith equals: 7
 ]
 
@@ -39,7 +39,7 @@ FuelTankTest >> test04FuelTankInitializeWithFuelThenIsNotEmpty [
 
 	| aFuelTank |
 	aFuelTank := FuelTank fullWith: 10.
-	
+
 	self deny: aFuelTank isEmpty
 ]
 
@@ -48,6 +48,6 @@ FuelTankTest >> test05FuelTankInitializedWithoutFuelThenIsEmpty [
 
 	| aFuelTank |
 	aFuelTank := FuelTank fullWith: 0.
-	
+
 	self assert: aFuelTank isEmpty
 ]
